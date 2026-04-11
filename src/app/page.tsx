@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <main className="flex flex-col min-h-screen">
+    <>
       {/* Hero Section */}
       <section className="pt-32 pb-24 md:py-40 bg-gradient-to-b from-night via-night to-night text-white">
         <div className="max-w-4xl mx-auto px-6 flex flex-col gap-12">
@@ -59,6 +59,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

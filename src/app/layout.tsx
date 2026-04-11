@@ -1,32 +1,46 @@
 import type { Metadata } from "next";
-import { DM_Sans, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  display: "swap",
-});
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans-var",
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+  variable: "--font-jetbrains",
   subsets: ["latin"],
   weight: ["400"],
-  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Ulpiano — El sistema operativo de las herencias",
+  title: "Ulpiano | Plataforma Integral de Gestión Sucesoria",
   description:
-    "Plataforma de planificación y gestión sucesoria integral para abogados, asesores fiscales y notarías.",
+    "La plataforma que estructura, valida y documenta el proceso sucesorio completo. Para abogados, asesores y notarías que gestionan herencias.",
+  keywords: [
+    "gestión sucesoria",
+    "herencias",
+    "planificación patrimonial",
+    "fiscalidad sucesoria",
+    "despachos abogados",
+  ],
+  openGraph: {
+    title: "Ulpiano | Plataforma Integral de Gestión Sucesoria",
+    description: "El sistema operativo de las herencias.",
+    url: "https://ulpiano.es",
+    siteName: "Ulpiano",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -37,9 +51,13 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${dmSans.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="bg-white text-ink antialiased">
+        <Header />
+        <main className="flex flex-col min-h-screen">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

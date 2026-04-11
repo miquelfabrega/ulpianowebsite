@@ -1,46 +1,32 @@
 import type { Metadata } from "next";
-import { Inter, DM_Sans, JetBrains_Mono } from "next/font/google";
+import { DM_Sans, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans-var",
-  subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains",
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   weight: ["400"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Ulpiano | Plataforma Integral de Gestión Sucesoria",
+  title: "Ulpiano — El sistema operativo de las herencias",
   description:
-    "La plataforma que estructura, valida y documenta el proceso sucesorio completo. Para abogados, asesores y notarías que gestionan herencias.",
-  keywords: [
-    "gestión sucesoria",
-    "herencias",
-    "planificación patrimonial",
-    "fiscalidad sucesoria",
-    "despachos abogados",
-  ],
-  openGraph: {
-    title: "Ulpiano | Plataforma Integral de Gestión Sucesoria",
-    description: "El sistema operativo de las herencias.",
-    url: "https://ulpiano.es",
-    siteName: "Ulpiano",
-    locale: "es_ES",
-    type: "website",
-  },
+    "Plataforma de planificación y gestión sucesoria integral para abogados, asesores fiscales y notarías.",
 };
 
 export default function RootLayout({
@@ -51,13 +37,9 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
+      className={`${dmSans.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="bg-white text-ink antialiased">
-        <Header />
-        <main className="flex flex-col min-h-screen">{children}</main>
-        <Footer />
-      </body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

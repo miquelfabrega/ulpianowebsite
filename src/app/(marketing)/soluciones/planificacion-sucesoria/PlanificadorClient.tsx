@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 
 /* =============================================
    SVG ICONS (inline, no raster images)
@@ -232,28 +231,6 @@ export function PlanificadorClient() {
 
   return (
     <div ref={revealRef}>
-      {/* ——————————————— NAV ——————————————— */}
-      <nav className="nav" aria-label="Navegación principal">
-        <div className="container nav-inner">
-          <Link
-            href="/"
-            style={{
-              fontFamily: "var(--font-dm), 'DM Sans', sans-serif",
-              fontWeight: 700,
-              fontSize: 22,
-              color: "var(--white)",
-              textDecoration: "none",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            ulpiano
-          </Link>
-          <a href="#solicita-demo" className="btn-primary" style={{ padding: "10px 24px", fontSize: 14 }}>
-            Solicita demo
-          </a>
-        </div>
-      </nav>
-
       {/* ——————————————— SECCIÓN 1: HERO ——————————————— */}
       <section
         style={{
@@ -1088,38 +1065,6 @@ export function PlanificadorClient() {
           </div>
         </div>
       </section>
-
-      {/* ——————————————— FOOTER ——————————————— */}
-      <footer style={{ background: "var(--ink)", padding: "var(--space-12) 0" }}>
-        <div className="container">
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              gap: "var(--space-4)",
-            }}
-          >
-            <Link
-              href="/"
-              style={{
-                fontFamily: "var(--font-dm), 'DM Sans', sans-serif",
-                fontWeight: 700,
-                fontSize: 20,
-                color: "var(--white)",
-                textDecoration: "none",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              ulpiano
-            </Link>
-            <p style={{ fontSize: 14, color: "var(--fog)" }}>
-              &copy; {new Date().getFullYear()} Ulpiano. Todos los derechos reservados.
-            </p>
-          </div>
-        </div>
-      </footer>
 
       {/* ——————————————— RESPONSIVE + LAYOUT STYLES ——————————————— */}
       <style>{`

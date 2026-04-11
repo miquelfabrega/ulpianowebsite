@@ -1,16 +1,5 @@
-import type { Metadata } from "next";
-import { PlanificadorClient } from "./PlanificadorClient";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title:
-    "Planificador de Herencias | Inventario patrimonial y escenarios sucesorios — Ulpiano",
-  description:
-    "Consolida bienes, derechos y deudas del causante en un único inventario. Calcula legítimas según el CCCat, compara escenarios de distribución y genera la documentación del expediente.",
-  alternates: {
-    canonical: "https://ulpiano.es/planificador-herencias",
-  },
-};
-
-export default function PlanificadorHerenciasPage() {
-  return <PlanificadorClient />;
+export default function PlanificadorHerenciasRedirect() {
+  redirect("/soluciones/planificacion-sucesoria");
 }

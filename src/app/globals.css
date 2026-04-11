@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ============================================
+   TAILWIND V4 THEME — ULPIANO DESIGN TOKENS
+   ============================================ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Fonts (via next/font CSS variables) */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-dm-sans: var(--font-dm-sans-var), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Colors — Ulpiano Brand */
+  --color-night: #0F1F3D;
+  --color-ink: #1E293B;
+  --color-slate: #64748B;
+  --color-fog: #94A3B8;
+  --color-mist: #CBD5E1;
+  --color-surface: #F1F5F9;
+  --color-ulpiano-green: #2D6A4F;
+  --color-green-light: #40916C;
+  --color-green-bg: #D8F3DC;
+
+  /* Colors — Functional */
+  --color-warning: #B45309;
+  --color-warning-bg: #FEF3C7;
+  --color-error: #991B1B;
+  --color-error-bg: #FEE2E2;
+  --color-info: #1E6A9E;
+  --color-info-bg: #DBEAFE;
+
+  /* Spacing (8px base scale) */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+  --spacing-24: 96px;
+  --spacing-32: 128px;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(15, 31, 61, 0.04), 0 4px 12px rgba(15, 31, 61, 0.06);
+  --shadow-card-hover: 0 4px 8px rgba(15, 31, 61, 0.06), 0 12px 28px rgba(15, 31, 61, 0.10);
+  --shadow-btn: 0 2px 4px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  --shadow-btn-hover: 0 4px 12px rgba(45, 106, 79, 0.25);
+
+  /* Max widths */
+  --container-3xl: 1200px;
+  --container-4xl: 1280px;
+
+  /* Animations */
+  --animate-scroll-reveal: scroll-reveal 0.7s ease forwards;
+
+  @keyframes scroll-reveal {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================
+   BASE STYLES
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.child-stagger > * {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.child-stagger > *:nth-child(1) { animation-delay: 100ms; }
+.child-stagger > *:nth-child(2) { animation-delay: 200ms; }
+.child-stagger > *:nth-child(3) { animation-delay: 300ms; }
+.child-stagger > *:nth-child(4) { animation-delay: 400ms; }
+.child-stagger > *:nth-child(5) { animation-delay: 500ms; }

@@ -31,8 +31,9 @@ const columns = [
   {
     header: "Contacto",
     links: [
+      { label: "Formulario de contacto", href: "/contacto" },
       { label: "soporte@ulpiano.es", href: "mailto:soporte@ulpiano.es" },
-      { label: "+34 XXX XXX XXX", href: "#" },
+      { label: "+34 972 XXX XXX", href: "tel:+34972000000" },
     ],
   },
 ];

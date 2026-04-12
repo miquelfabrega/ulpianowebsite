@@ -51,7 +51,7 @@ export default function Header() {
 
         {/* CTAs Desktop */}
         <div className="hidden md:flex items-center gap-4">
-          <ButtonGhost href="#" size="sm">
+          <ButtonGhost href="/login" size="sm">
             Iniciar sesión
           </ButtonGhost>
           <ButtonPrimary href="/demo" size="sm">

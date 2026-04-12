@@ -258,14 +258,45 @@ export function DemoClient() {
   const stagger = (i: number) => ({ transitionDelay: `${i * 100}ms` });
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [formError, setFormError] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
+    setFormError("");
+
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      company: (form.elements.namedItem("company") as HTMLInputElement).value,
+    };
+
+    try {
+      const res = await fetch("/api/demo-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Error al enviar");
       setSubmitted(true);
-    }, 1200);
+
+      const w = window as Window & { dataLayer?: Record<string, unknown>[] };
+      w.dataLayer?.push({
+        event: "demo_form_submitted",
+        empresa: data.company,
+      });
+      w.dataLayer?.push({
+        event: "generate_lead",
+        lead_type: "demo",
+        currency: "EUR",
+        value: 150,
+      });
+    } catch {
+      setFormError("Ha ocurrido un error. Inténtalo de nuevo.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -630,6 +661,11 @@ export function DemoClient() {
                           style={inputStyle}
                         />
                       </div>
+                      {formError && (
+                        <p style={{ fontSize: 13, color: "var(--error)", lineHeight: 1.4 }}>
+                          {formError}
+                        </p>
+                      )}
                       <button
                         type="submit"
                         className="btn-primary"

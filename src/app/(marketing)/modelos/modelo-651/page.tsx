@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Modelo651Client } from "./Modelo651Client";
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 
 export const metadata: Metadata = {
   title:
-    "Modelo 651: Autoliquidación del Impuesto de Donaciones | Guía Completa — Ulpiano",
+    "Modelo 651: Autoliquidación del Impuesto de Donaciones | Guía Completa",
   description:
     "Guía completa del Modelo 651: qué es, quién lo presenta, plazo de 30 días hábiles, reducciones catalanas para donaciones (Llei 19/2010, Arts. 15-23), comparativa donación vs herencia y cómo Ulpiano calcula la cuota automáticamente.",
   alternates: {
@@ -12,5 +13,16 @@ export const metadata: Metadata = {
 };
 
 export default function Modelo651Page() {
-  return <Modelo651Client />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", href: "/" },
+          { name: "Modelos fiscales", href: "/modelos" },
+          { name: "Modelo 651", href: "/modelos/modelo-651" },
+        ]}
+      />
+      <Modelo651Client />
+    </>
+  );
 }

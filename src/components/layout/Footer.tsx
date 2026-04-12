@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 const columns = [
@@ -35,9 +37,9 @@ const columns = [
   {
     header: "Legal",
     links: [
-      { label: "Privacidad", href: "#" },
-      { label: "Términos", href: "#" },
-      { label: "Cookies", href: "#" },
+      { label: "Privacidad", href: "/legal/privacidad" },
+      { label: "Términos", href: "/legal/terminos" },
+      { label: "Cookies", href: "/legal/cookies" },
     ],
   },
   {
@@ -45,7 +47,6 @@ const columns = [
     links: [
       { label: "Formulario de contacto", href: "/contacto" },
       { label: "soporte@ulpiano.es", href: "mailto:soporte@ulpiano.es" },
-      { label: "+34 972 XXX XXX", href: "tel:+34972000000" },
     ],
   },
 ];
@@ -87,10 +88,20 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-mist/10 pt-8">
-          <p className="text-xs text-white/50 text-center">
+        <div className="border-t border-mist/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-white/50">
             Ulpiano &copy; 2026. Plataforma Integral de Gestión Sucesoria
           </p>
+          <button
+            type="button"
+            id="open-cookie-settings"
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("open-cookie-settings"))
+            }
+            className="text-xs text-white/40 hover:text-white/70 transition-colors underline underline-offset-2 cursor-pointer"
+          >
+            Ajustes de cookies
+          </button>
         </div>
       </div>
     </footer>

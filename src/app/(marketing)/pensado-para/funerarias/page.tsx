@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { FunerariasClient } from "./FunerariasClient";
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 
 export const metadata: Metadata = {
-  title: "Para Funerarias | Servicio Sucesorio Integrado — Ulpiano",
+  title: "Para Funerarias | Servicio Sucesorio Integrado",
   description:
     "Amplía tu servicio funerario con la tramitación sucesoria digital. Expedientes estructurados, documentación procesada, ISD calculado. Ulpiano para funerarias.",
   alternates: {
@@ -11,5 +12,16 @@ export const metadata: Metadata = {
 };
 
 export default function FunerariasPage() {
-  return <FunerariasClient />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", href: "/" },
+          { name: "Pensado para", href: "/" },
+          { name: "Funerarias", href: "/pensado-para/funerarias" },
+        ]}
+      />
+      <FunerariasClient />
+    </>
+  );
 }

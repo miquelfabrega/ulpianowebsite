@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { PlanificadorClient } from "./PlanificadorClient";
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 
 export const metadata: Metadata = {
   title:
-    "Planificador de Herencias | Inventario patrimonial y escenarios sucesorios — Ulpiano",
+    "Planificador de Herencias | Inventario patrimonial y escenarios sucesorios",
   description:
     "Consolida bienes, derechos y deudas del causante en un único inventario. Calcula legítimas según el CCCat, compara escenarios de distribución y genera la documentación del expediente.",
   alternates: {
@@ -12,5 +13,16 @@ export const metadata: Metadata = {
 };
 
 export default function PlanificacionSucesoriaPage() {
-  return <PlanificadorClient />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", href: "/" },
+          { name: "Soluciones", href: "/soluciones" },
+          { name: "Planificación sucesoria", href: "/soluciones/planificacion-sucesoria" },
+        ]}
+      />
+      <PlanificadorClient />
+    </>
+  );
 }

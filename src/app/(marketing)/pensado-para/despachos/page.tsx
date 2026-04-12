@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
+import { DespachosClient } from "./DespachosClient";
+
+export const metadata: Metadata = {
+  title:
+    "Para Despachos de Abogados | Gestión Digital de Herencias — Ulpiano",
+  description:
+    "Digitaliza la gestión de herencias en tu despacho. Expedientes sucesorios estructurados, diagramas interactivos, simulaciones fiscales y documentos generados automáticamente. ulpiano.es",
+  alternates: {
+    canonical: "https://ulpiano.es/pensado-para/despachos",
+  },
+};
+
 export default function DespachosPage() {
-  return (
-    <div className="pt-16 min-h-screen flex items-center justify-center">
-      <h1 className="text-2xl font-bold text-ink">Despachos de Abogados — En construcción</h1>
-    </div>
-  );
+  return <DespachosClient />;
 }

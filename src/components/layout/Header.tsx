@@ -238,7 +238,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className={`fixed top-0 left-0 right-0 z-100 h-14 transition-all duration-300 border-b ${
+      className={`fixed top-0 left-0 right-0 z-100 h-14 overflow-visible transition-all duration-300 border-b ${
         isScrolled
           ? "bg-night/95 backdrop-blur-xl border-white/[0.06] shadow-lg"
           : "bg-night/80 backdrop-blur-xl border-white/[0.04]"
@@ -370,7 +370,7 @@ export default function Header() {
 
       {/* ─── Mobile menu ─── */}
       <div
-        className={`fixed inset-0 top-14 bg-night/[0.98] backdrop-blur-2xl lg:hidden transition-all duration-250 ${
+        className={`absolute top-full left-0 right-0 h-[calc(100dvh-3.5rem)] bg-night/[0.98] backdrop-blur-2xl lg:hidden transition-all duration-300 ${
           isMobileOpen
             ? "pointer-events-auto opacity-100 translate-y-0"
             : "pointer-events-none opacity-0 -translate-y-2"

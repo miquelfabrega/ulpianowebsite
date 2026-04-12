@@ -56,52 +56,7 @@ function CheckIcon() {
   );
 }
 
-function ClipboardTreeIcon() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="var(--ulpiano-green)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-      <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
-      <path d="M12 11v6" />
-      <path d="M9 14h6" />
-    </svg>
-  );
-}
-
-function CalculatorChartIcon() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="var(--ulpiano-green)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <rect x="4" y="2" width="16" height="20" rx="2" />
-      <line x1="8" y1="6" x2="16" y2="6" />
-      <line x1="8" y1="10" x2="10" y2="10" />
-      <line x1="14" y1="10" x2="16" y2="10" />
-      <line x1="8" y1="14" x2="10" y2="14" />
-      <line x1="14" y1="14" x2="16" y2="14" />
-      <line x1="8" y1="18" x2="16" y2="18" />
-    </svg>
-  );
-}
-
-function DocumentPenIcon() {
+function FileTextIcon() {
   return (
     <svg
       width="24"
@@ -116,12 +71,14 @@ function DocumentPenIcon() {
     >
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
       <polyline points="14 2 14 8 20 8" />
-      <path d="M16 13l-4 4-2-2" />
+      <line x1="16" y1="13" x2="8" y2="13" />
+      <line x1="16" y1="17" x2="8" y2="17" />
+      <polyline points="10 9 9 9 8 9" />
     </svg>
   );
 }
 
-function EyeIcon() {
+function FolderLockIcon() {
   return (
     <svg
       width="24"
@@ -134,13 +91,14 @@ function EyeIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-      <circle cx="12" cy="12" r="3" />
+      <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+      <rect x="10" y="13" width="4" height="4" rx="1" />
+      <path d="M11 13v-1a1 1 0 0 1 2 0v1" />
     </svg>
   );
 }
 
-function ClockIcon() {
+function MessageSquareIcon() {
   return (
     <svg
       width="24"
@@ -153,13 +111,12 @@ function ClockIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
     </svg>
   );
 }
 
-function ShieldCheckIcon() {
+function UsersIcon() {
   return (
     <svg
       width="24"
@@ -172,13 +129,15 @@ function ShieldCheckIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      <polyline points="9 12 11 14 15 10" />
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
     </svg>
   );
 }
 
-function LayersIcon() {
+function FileOutputIcon() {
   return (
     <svg
       width="24"
@@ -191,9 +150,48 @@ function LayersIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <polygon points="12 2 2 7 12 12 22 7 12 2" />
-      <polyline points="2 17 12 22 22 17" />
-      <polyline points="2 12 12 17 22 12" />
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="12" y1="18" x2="12" y2="12" />
+      <polyline points="9 15 12 18 15 15" />
+    </svg>
+  );
+}
+
+function LockIcon() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="var(--ulpiano-green)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </svg>
+  );
+}
+
+function LinkIcon() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="var(--ulpiano-green)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
     </svg>
   );
 }
@@ -242,96 +240,96 @@ function CheckCircleSmall() {
 
 const featureBlocks = [
   {
-    icon: <ClipboardTreeIcon />,
-    title: "Gestión Digital de Expedientes y Esquemas Sucesorios",
+    icon: <FileTextIcon />,
+    title: "Expediente Post-Testamento Activo",
     subtitle:
-      "El expediente sucesorio completo, digitalizado y estructurado.",
+      "La relación con el cliente no termina en la firma. El expediente sigue vivo.",
     features: [
       {
-        title: "Paso a Paso Digital",
-        desc: "Define parámetros legales (legítimas, régimen foral) y añade datos de herederos y bienes.",
+        title: "Seguimiento Continuo del Cliente",
+        desc: "El testamento es el inicio. Ulpiano mantiene el expediente activo con alertas, plazos y eventos sucesorios posteriores. La relación con tu cliente se extiende 20 años, no 20 minutos.",
       },
       {
-        title: "Diagramas Interactivos",
-        desc: "Muestra el árbol familiar y la estructura patrimonial, facilitando la explicación al cliente y sorprendiendo con una experiencia clara y atractiva.",
+        title: "Alertas y Recordatorios Automáticos",
+        desc: "Plazos fiscales, cambios normativos que afectan al expediente, eventos sucesorios pendientes. Todo señalizado antes de que sea urgente.",
       },
     ],
   },
   {
-    icon: <CalculatorChartIcon />,
-    title: "Atribución de Bienes y Control Fiscal",
+    icon: <FolderLockIcon />,
+    title: "Documentación Centralizada y Generación de Escrituras",
     subtitle:
-      "Distribución patrimonial y fiscalidad sucesoria, automatizadas.",
+      "Todo el expediente en un lugar. Las escrituras, generadas desde los datos.",
     features: [
       {
-        title: "Reportes de Atribución",
-        desc: "Presenta un desglose detallado sobre la distribución de bienes y la obligación tributaria de cada beneficiario. Muestra la estructura del patrimonio y los herederos en un esquema claro y atractivo.",
+        title: "Repositorio Cifrado por Expediente",
+        desc: "Testamento, certificado de defunción, escrituras, DNIs — todo cifrado, accesible por rol. Sin documentos dispersos en carpetas compartidas.",
       },
       {
-        title: "Simulaciones de Impuestos",
-        desc: "Calcula en segundos cuánto pagará cada heredero, considerando reducciones y bonificaciones autonómicas. Ajusta distribuciones en tiempo real para mostrar posibles variaciones en la carga fiscal.",
+        title: "Escrituras Generadas desde Datos del Expediente",
+        desc: "La escritura de partición, redactada a partir de los datos estructurados del expediente. Sin empezar desde un documento en blanco. Tú revisas y firmas.",
       },
     ],
   },
   {
-    icon: <DocumentPenIcon />,
-    title: "Creación de Documentos y Firma",
+    icon: <MessageSquareIcon />,
+    title: "Comunicación y Coordinación con el Cliente",
     subtitle:
-      "De datos estructurados a documentos prácticamente definitivos.",
+      "Un canal único por expediente. Sin email, sin WhatsApp.",
     features: [
       {
-        title: "Automatización de Documentos",
-        desc: "Genera testamentos, pactos sucesorios y escrituras adaptadas a la normativa vigente, reduciendo tareas manuales.",
+        title: "Canal de Comunicación Integrado",
+        desc: "Cada expediente tiene su canal. El cliente pregunta, tú respondes. Sin hilos de email perdidos ni grupos de WhatsApp descontrolados.",
       },
       {
-        title: "Firma y Registro",
-        desc: "Acelera la formalización con documentos prácticamente definitivos, evitando correcciones de última hora.",
+        title: "Panel de Estado Visible para el Cliente",
+        desc: "El cliente ve en qué punto está su expediente: qué está hecho, qué falta, qué viene después. Transparencia que genera confianza.",
       },
     ],
   },
 ];
 
 const claims = [
-  "Las atribuciones sucesorias en tres minutos",
-  "La herencia legal meditada",
-  "La demanda por legítima preparada",
-  "La demanda por cuarta viudal preparada",
+  "La escritura de partición, generada desde el expediente",
+  "El seguimiento post-testamento, desde la plataforma",
+  "La documentación del expediente, cifrada y centralizada",
+  "La comunicación con el cliente, sin salir de Ulpiano",
 ];
 
 const benefits = [
   {
-    icon: <EyeIcon />,
-    title: "Transparencia para el Cliente",
-    desc: "Ofrece diagramas claros y simulaciones en tiempo real, generando confianza y diferenciándote de la competencia.",
+    icon: <UsersIcon />,
+    title: "Relación Continuada con el Cliente",
+    desc: "El testamento es el inicio. El expediente post-testamento mantiene la relación activa durante años. Tu notaría, presente cuando el cliente lo necesita.",
   },
   {
-    icon: <ClockIcon />,
-    title: "Mayor Eficiencia Interna",
-    desc: "Automatiza procesos y libera horas de trabajo manual.",
+    icon: <FileOutputIcon />,
+    title: "Eficiencia Documental",
+    desc: "Escrituras generadas desde los datos del expediente. Sin redactar desde cero. Sin copiar-pegar entre documentos.",
   },
   {
-    icon: <ShieldCheckIcon />,
-    title: "Reducción de Errores y Riesgos Legales",
-    desc: "Ulpiano refuerza la coherencia con la normativa sucesoria y actualizaciones forales.",
+    icon: <LockIcon />,
+    title: "Seguridad y Control de Acceso",
+    desc: "Documentación cifrada, accesible por rol. Trazabilidad de quién accede a qué y cuándo. El expediente está protegido.",
   },
   {
-    icon: <LayersIcon />,
-    title: "Servicio Integral",
-    desc: "Combina el asesoramiento legal con una plataforma robusta que cubre desde la planificación patrimonial hasta la tramitación fiscal.",
+    icon: <LinkIcon />,
+    title: "Coordinación sin Fricción",
+    desc: "Sin hilos de email, sin grupos de WhatsApp. Un canal único por expediente. Cada comunicación trazable y archivada.",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "Desde que usamos Ulpiano, la preparación de un expediente sucesorio nos lleva la mitad de tiempo. Y el cliente entiende lo que paga.",
-    author: "Marta R., Abogada",
-    location: "Despacho en Girona",
+      "El expediente post-testamento nos permite mantener la relación con familias durante años. Antes, firmaban y no volvíamos a saber de ellos hasta la siguiente generación.",
+    author: "Carmen L., Notaria",
+    location: "Girona",
   },
   {
     quote:
-      "La visualización del árbol familiar y las simulaciones fiscales cambiaron la forma en que presentamos las herencias a nuestros clientes.",
-    author: "Jordi P., Abogado Civilista",
+      "Generar la escritura de partición desde los datos del expediente nos ahorra horas de redacción. Y el resultado es más coherente que empezar desde cero.",
+    author: "Àlex M., Oficial de Notaría",
     location: "Barcelona",
   },
 ];
@@ -340,7 +338,7 @@ const testimonials = [
    MAIN COMPONENT
    ============================================= */
 
-export function DespachosClient() {
+export function NotariasClient() {
   const revealRef = useReveal();
   const stagger = (i: number) => ({ transitionDelay: `${i * 100}ms` });
 
@@ -378,7 +376,7 @@ export function DespachosClient() {
               marginBottom: "var(--space-4)",
             }}
           >
-            PENSADO PARA ABOGADOS
+            PENSADO PARA NOTARÍAS
           </p>
           <h1
             className="h1 reveal"
@@ -389,8 +387,8 @@ export function DespachosClient() {
               ...stagger(1),
             }}
           >
-            Optimiza tus Expedientes de Herencia y Ofrece a tus Clientes la
-            Claridad que Esperan
+            El Expediente Post-Testamento, Activo. La Documentación
+            Centralizada. El Seguimiento del Cliente, desde la Plataforma.
           </h1>
           <p
             className="body-lg reveal"
@@ -401,9 +399,10 @@ export function DespachosClient() {
               ...stagger(2),
             }}
           >
-            Con Ulpiano, agiliza la elaboración y el seguimiento de
-            expedientes sucesorios, ofreciendo al cliente diagramas y
-            visualizaciones que facilitan la comprensión de cada proceso.
+            Con Ulpiano, la relación con tu cliente no termina en la firma. El
+            expediente sigue vivo, la documentación está cifrada y centralizada,
+            y las escrituras se generan desde los datos — sin redactar desde
+            cero.
           </p>
           <div
             className="reveal"
@@ -441,7 +440,7 @@ export function DespachosClient() {
         <div className="container">
           <div className="reveal" style={{ marginBottom: "var(--space-10)" }}>
             <p className="eyebrow" style={{ color: "var(--slate)" }}>
-              PARA TU DESPACHO
+              PARA TU NOTARÍA
             </p>
             <h2
               className="h2"
@@ -451,7 +450,7 @@ export function DespachosClient() {
                 maxWidth: 700,
               }}
             >
-              ¿Por Qué Ulpiano para Abogados?
+              ¿Por Qué Ulpiano para Notarías?
             </h2>
             <p
               className="body-lg"
@@ -462,12 +461,12 @@ export function DespachosClient() {
                 fontSize: 17,
               }}
             >
-              Automatiza la Gestión de Herencias, Visualiza la Distribución de
-              Bienes y Gana Eficiencia
+              El Expediente Post-Testamento Activo, la Documentación Cifrada y
+              la Escritura Generada desde Datos
             </p>
           </div>
 
-          <div className="desp-features-grid">
+          <div className="not-features-grid">
             {featureBlocks.map((block, i) => (
               <div
                 key={block.title}
@@ -567,7 +566,7 @@ export function DespachosClient() {
         }}
       >
         <div className="container">
-          <div className="desp-claims-grid">
+          <div className="not-claims-grid">
             {claims.map((claim, i) => (
               <div
                 key={claim}
@@ -621,11 +620,11 @@ export function DespachosClient() {
                 marginTop: "var(--space-3)",
               }}
             >
-              Lo que cambia en tu despacho con Ulpiano
+              Lo que cambia en tu notaría con Ulpiano
             </h2>
           </div>
 
-          <div className="desp-benefits-grid">
+          <div className="not-benefits-grid">
             {benefits.map((benefit, i) => (
               <div
                 key={benefit.title}
@@ -679,7 +678,7 @@ export function DespachosClient() {
         }}
       >
         <div className="container">
-          <div className="desp-testimonials-grid">
+          <div className="not-testimonials-grid">
             {testimonials.map((t, i) => (
               <div key={t.author} className="reveal" style={stagger(i + 1)}>
                 <blockquote
@@ -709,7 +708,6 @@ export function DespachosClient() {
                     — {t.author} | {t.location}
                   </footer>
                 </blockquote>
-                {/* Placeholder para capturas de diagramas */}
                 <div
                   style={{
                     marginTop: "var(--space-6)",
@@ -739,7 +737,7 @@ export function DespachosClient() {
               fontStyle: "italic",
             }}
           >
-            Pendiente: testimonios reales de abogados usuarios
+            Pendiente: testimonios reales de notarías usuarias
           </p>
         </div>
       </section>
@@ -760,8 +758,8 @@ export function DespachosClient() {
               textAlign: "center",
             }}
           >
-            Mejora la Experiencia de Tus Clientes y Digitaliza la Gestión
-            Sucesoria
+            El Expediente Post-Testamento que Mantiene la Relación con tu
+            Cliente Activa durante 20 Años
           </h2>
           <p
             className="reveal"
@@ -775,8 +773,8 @@ export function DespachosClient() {
               ...stagger(1),
             }}
           >
-            Descubre cómo Ulpiano puede agilizar tus casos de herencia y
-            ofrecer una presentación visual del patrimonio más impactante.
+            Descubre cómo Ulpiano puede transformar la gestión post-testamento
+            de tu notaría y ofrecer un seguimiento continuado a tus clientes.
           </p>
           <div
             className="reveal"
@@ -831,8 +829,13 @@ export function DespachosClient() {
               EXPLORA NUESTRAS SOLUCIONES
             </p>
           </div>
-          <div className="desp-crosslinks-grid">
+          <div className="not-crosslinks-grid">
             {[
+              {
+                href: "/soluciones/documentacion-sucesoria",
+                label: "Documentación Sucesoria",
+                desc: "Generación documental inteligente",
+              },
               {
                 href: "/soluciones/planificacion-sucesoria",
                 label: "Planificación Sucesoria",
@@ -842,11 +845,6 @@ export function DespachosClient() {
                 href: "/soluciones/fiscalidad-sucesoria",
                 label: "Fiscalidad Sucesoria",
                 desc: "Motor ISD automatizado",
-              },
-              {
-                href: "/soluciones/documentacion-sucesoria",
-                label: "Documentación Sucesoria",
-                desc: "Generación documental inteligente",
               },
             ].map((link, i) => (
               <Link
@@ -885,27 +883,27 @@ export function DespachosClient() {
 
       {/* ─────────────── RESPONSIVE STYLES ─────────────── */}
       <style>{`
-        .desp-features-grid {
+        .not-features-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: var(--space-8);
         }
-        .desp-claims-grid {
+        .not-claims-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
           gap: var(--space-6);
         }
-        .desp-benefits-grid {
+        .not-benefits-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: var(--space-6);
         }
-        .desp-testimonials-grid {
+        .not-testimonials-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: var(--space-8);
         }
-        .desp-crosslinks-grid {
+        .not-crosslinks-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: var(--space-6);
@@ -913,40 +911,40 @@ export function DespachosClient() {
         }
 
         @media (max-width: 1023px) {
-          .desp-features-grid {
+          .not-features-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-          .desp-features-grid > :last-child {
+          .not-features-grid > :last-child {
             grid-column: 1 / -1;
           }
-          .desp-crosslinks-grid {
+          .not-crosslinks-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-          .desp-crosslinks-grid > :last-child {
+          .not-crosslinks-grid > :last-child {
             grid-column: 1 / -1;
           }
         }
 
         @media (max-width: 767px) {
-          .desp-features-grid {
+          .not-features-grid {
             grid-template-columns: 1fr;
           }
-          .desp-features-grid > :last-child {
+          .not-features-grid > :last-child {
             grid-column: auto;
           }
-          .desp-benefits-grid {
+          .not-benefits-grid {
             grid-template-columns: 1fr;
           }
-          .desp-testimonials-grid {
+          .not-testimonials-grid {
             grid-template-columns: 1fr;
           }
-          .desp-claims-grid {
+          .not-claims-grid {
             grid-template-columns: 1fr;
           }
-          .desp-crosslinks-grid {
+          .not-crosslinks-grid {
             grid-template-columns: 1fr;
           }
-          .desp-crosslinks-grid > :last-child {
+          .not-crosslinks-grid > :last-child {
             grid-column: auto;
           }
         }

@@ -17,7 +17,19 @@ const columns = [
       { label: "Despachos", href: "/pensado-para/despachos" },
       { label: "Notarías", href: "/pensado-para/notarias" },
       { label: "Asesorías", href: "/pensado-para/asesorias" },
-      { label: "Family Office", href: "#" },
+      { label: "Family Office", href: "/pensado-para/family-office" },
+      { label: "Funerarias", href: "/pensado-para/funerarias" },
+      { label: "Aseguradoras", href: "/pensado-para/aseguradoras" },
+    ],
+  },
+  {
+    header: "Modelos fiscales",
+    links: [
+      { label: "Modelo 650 — Sucesiones", href: "/modelos/modelo-650" },
+      { label: "Modelo 651 — Donaciones", href: "/modelos/modelo-651" },
+      { label: "Modelo 652 — Seguros", href: "/modelos/modelo-652" },
+      { label: "Modelo 653 — Consolidación", href: "/modelos/modelo-653" },
+      { label: "Modelo 660 — Inventario", href: "/modelos/modelo-660" },
     ],
   },
   {
@@ -42,7 +54,7 @@ export default function Footer() {
   return (
     <footer className="bg-ink text-white border-t border-mist/10">
       <div className="max-w-4xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-12 mb-12">
           {/* Branding */}
           <div>
             <h3 className="font-dm-sans font-bold text-lg mb-2">ULPIANO</h3>

@@ -56,7 +56,7 @@ function CheckIcon() {
   );
 }
 
-function ClipboardTreeIcon() {
+function HeartHandshakeIcon() {
   return (
     <svg
       width="24"
@@ -69,39 +69,15 @@ function ClipboardTreeIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-      <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
-      <path d="M12 11v6" />
-      <path d="M9 14h6" />
+      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+      <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66" />
+      <path d="m18 15-2-2" />
+      <path d="m15 18-2-2" />
     </svg>
   );
 }
 
-function CalculatorChartIcon() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="var(--ulpiano-green)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <rect x="4" y="2" width="16" height="20" rx="2" />
-      <line x1="8" y1="6" x2="16" y2="6" />
-      <line x1="8" y1="10" x2="10" y2="10" />
-      <line x1="14" y1="10" x2="16" y2="10" />
-      <line x1="8" y1="14" x2="10" y2="14" />
-      <line x1="14" y1="14" x2="16" y2="14" />
-      <line x1="8" y1="18" x2="16" y2="18" />
-    </svg>
-  );
-}
-
-function DocumentPenIcon() {
+function FileSearchIcon() {
   return (
     <svg
       width="24"
@@ -116,12 +92,13 @@ function DocumentPenIcon() {
     >
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
       <polyline points="14 2 14 8 20 8" />
-      <path d="M16 13l-4 4-2-2" />
+      <circle cx="11.5" cy="14.5" r="2.5" />
+      <line x1="13.25" y1="16.25" x2="15" y2="18" />
     </svg>
   );
 }
 
-function EyeIcon() {
+function MonitorIcon() {
   return (
     <svg
       width="24"
@@ -134,13 +111,14 @@ function EyeIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-      <circle cx="12" cy="12" r="3" />
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+      <line x1="8" y1="21" x2="16" y2="21" />
+      <line x1="12" y1="17" x2="12" y2="21" />
     </svg>
   );
 }
 
-function ClockIcon() {
+function StarIcon() {
   return (
     <svg
       width="24"
@@ -153,13 +131,12 @@ function ClockIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
     </svg>
   );
 }
 
-function ShieldCheckIcon() {
+function TrophyIcon() {
   return (
     <svg
       width="24"
@@ -172,13 +149,17 @@ function ShieldCheckIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      <polyline points="9 12 11 14 15 10" />
+      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+      <path d="M4 22h16" />
+      <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+      <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+      <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
     </svg>
   );
 }
 
-function LayersIcon() {
+function CheckSquareIcon() {
   return (
     <svg
       width="24"
@@ -191,9 +172,27 @@ function LayersIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <polygon points="12 2 2 7 12 12 22 7 12 2" />
-      <polyline points="2 17 12 22 22 17" />
-      <polyline points="2 12 12 17 22 12" />
+      <polyline points="9 11 12 14 22 4" />
+      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+    </svg>
+  );
+}
+
+function AwardIcon() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="var(--ulpiano-green)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="8" r="6" />
+      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
     </svg>
   );
 }
@@ -242,96 +241,96 @@ function CheckCircleSmall() {
 
 const featureBlocks = [
   {
-    icon: <ClipboardTreeIcon />,
-    title: "Gestión Digital de Expedientes y Esquemas Sucesorios",
+    icon: <HeartHandshakeIcon />,
+    title: "El Servicio Funerario, Ampliado",
     subtitle:
-      "El expediente sucesorio completo, digitalizado y estructurado.",
+      "Tu servicio no termina en el sepelio. La tramitación sucesoria, integrada.",
     features: [
       {
-        title: "Paso a Paso Digital",
-        desc: "Define parámetros legales (legítimas, régimen foral) y añade datos de herederos y bienes.",
+        title: "Tramitación Sucesoria Integrada",
+        desc: "Del certificado de defunción al expediente sucesorio estructurado. Tus clientes reciben un camino completo — no solo una derivación a un tercero.",
       },
       {
-        title: "Diagramas Interactivos",
-        desc: "Muestra el árbol familiar y la estructura patrimonial, facilitando la explicación al cliente y sorprendiendo con una experiencia clara y atractiva.",
+        title: "Diferenciación Tangible",
+        desc: "Mientras otros terminan en el funeral, tu servicio continúa con la gestión sucesoria digital. Eso se recuerda. Eso se recomienda.",
       },
     ],
   },
   {
-    icon: <CalculatorChartIcon />,
-    title: "Atribución de Bienes y Control Fiscal",
+    icon: <FileSearchIcon />,
+    title: "Documentación Procesada y Fiscalidad Calculada",
     subtitle:
-      "Distribución patrimonial y fiscalidad sucesoria, automatizadas.",
+      "Los documentos del fallecido, procesados. El ISD, estimado para la familia.",
     features: [
       {
-        title: "Reportes de Atribución",
-        desc: "Presenta un desglose detallado sobre la distribución de bienes y la obligación tributaria de cada beneficiario. Muestra la estructura del patrimonio y los herederos en un esquema claro y atractivo.",
+        title: "Documentos Procesados Digitalmente",
+        desc: "Certificado de defunción subido → datos extraídos → expediente sucesorio estructurado. Sin transcripción manual. Sin papeleo disperso.",
       },
       {
-        title: "Simulaciones de Impuestos",
-        desc: "Calcula en segundos cuánto pagará cada heredero, considerando reducciones y bonificaciones autonómicas. Ajusta distribuciones en tiempo real para mostrar posibles variaciones en la carga fiscal.",
+        title: "ISD Estimado para la Familia",
+        desc: "La carga fiscal por heredero, calculada y presentada en un informe claro. La familia entiende qué va a pagar y por qué. Sin sorpresas.",
       },
     ],
   },
   {
-    icon: <DocumentPenIcon />,
-    title: "Creación de Documentos y Firma",
+    icon: <MonitorIcon />,
+    title: "Transparencia y Seguimiento para el Cliente",
     subtitle:
-      "De datos estructurados a documentos prácticamente definitivos.",
+      "El estado del expediente, visible. La distribución patrimonial, clara.",
     features: [
       {
-        title: "Automatización de Documentos",
-        desc: "Genera testamentos, pactos sucesorios y escrituras adaptadas a la normativa vigente, reduciendo tareas manuales.",
+        title: "Panel de Estado del Expediente",
+        desc: "La familia ve el progreso: qué está hecho, qué falta, qué viene después. Transparencia que reduce preguntas y genera confianza.",
       },
       {
-        title: "Firma y Registro",
-        desc: "Acelera la formalización con documentos prácticamente definitivos, evitando correcciones de última hora.",
+        title: "Distribución Patrimonial Visualizada",
+        desc: "Diagramas interactivos que muestran quién hereda qué. Claros, exportables, profesionales. La herencia deja de ser una caja negra.",
       },
     ],
   },
 ];
 
 const claims = [
-  "Las atribuciones sucesorias en tres minutos",
-  "La herencia legal meditada",
-  "La demanda por legítima preparada",
-  "La demanda por cuarta viudal preparada",
+  "El expediente sucesorio, estructurado desde el primer día",
+  "El ISD de cada heredero, estimado para la familia",
+  "La documentación del fallecido, procesada sin transcripción manual",
+  "El servicio funerario, ampliado más allá del sepelio",
 ];
 
 const benefits = [
   {
-    icon: <EyeIcon />,
-    title: "Transparencia para el Cliente",
-    desc: "Ofrece diagramas claros y simulaciones en tiempo real, generando confianza y diferenciándote de la competencia.",
+    icon: <StarIcon />,
+    title: "Servicio Completo para la Familia",
+    desc: "Tu funeraria acompaña desde el fallecimiento hasta la tramitación de la herencia. Un servicio integral que nadie más ofrece en tu mercado.",
   },
   {
-    icon: <ClockIcon />,
-    title: "Mayor Eficiencia Interna",
-    desc: "Automatiza procesos y libera horas de trabajo manual.",
+    icon: <TrophyIcon />,
+    title: "Diferenciación en el Mercado",
+    desc: "Mientras otros terminan en el sepelio, tú continúas con la gestión sucesoria digital. Eso se recuerda y se recomienda.",
   },
   {
-    icon: <ShieldCheckIcon />,
-    title: "Reducción de Errores y Riesgos Legales",
-    desc: "Ulpiano refuerza la coherencia con la normativa sucesoria y actualizaciones forales.",
+    icon: <CheckSquareIcon />,
+    title: "Operativa Digital, Sin Errores",
+    desc: "Documentos procesados, cálculos automatizados, expedientes trazables. Sin duplicidades ni papeleo confuso.",
   },
   {
-    icon: <LayersIcon />,
-    title: "Servicio Integral",
-    desc: "Combina el asesoramiento legal con una plataforma robusta que cubre desde la planificación patrimonial hasta la tramitación fiscal.",
+    icon: <AwardIcon />,
+    title: "Imagen Profesional y de Confianza",
+    desc: "Ofrecer soluciones completas transmite compromiso. Las familias lo valoran en un momento donde la confianza lo es todo.",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "Desde que usamos Ulpiano, la preparación de un expediente sucesorio nos lleva la mitad de tiempo. Y el cliente entiende lo que paga.",
-    author: "Marta R., Abogada",
-    location: "Despacho en Girona",
+      "Ofrecer la tramitación sucesoria como parte de nuestro servicio ha cambiado la percepción de las familias. Ya no somos solo la funeraria — somos quienes les ayudan a resolver lo que viene después.",
+    author: "Antoni B., Director de Funeraria",
+    location: "Girona",
   },
   {
     quote:
-      "La visualización del árbol familiar y las simulaciones fiscales cambiaron la forma en que presentamos las herencias a nuestros clientes.",
-    author: "Jordi P., Abogado Civilista",
+      "El expediente sucesorio estructurado nos permite derivar a un profesional con toda la documentación lista. Las familias lo agradecen enormemente.",
+    author: "Montse P., Responsable de Atención",
     location: "Barcelona",
   },
 ];
@@ -340,7 +339,7 @@ const testimonials = [
    MAIN COMPONENT
    ============================================= */
 
-export function DespachosClient() {
+export function FunerariasClient() {
   const revealRef = useReveal();
   const stagger = (i: number) => ({ transitionDelay: `${i * 100}ms` });
 
@@ -378,7 +377,7 @@ export function DespachosClient() {
               marginBottom: "var(--space-4)",
             }}
           >
-            PENSADO PARA ABOGADOS
+            PENSADO PARA FUNERARIAS
           </p>
           <h1
             className="h1 reveal"
@@ -389,8 +388,8 @@ export function DespachosClient() {
               ...stagger(1),
             }}
           >
-            Optimiza tus Expedientes de Herencia y Ofrece a tus Clientes la
-            Claridad que Esperan
+            La Tramitación Sucesoria que tus Clientes Necesitan. Integrada en tu
+            Servicio Funerario.
           </h1>
           <p
             className="body-lg reveal"
@@ -401,9 +400,10 @@ export function DespachosClient() {
               ...stagger(2),
             }}
           >
-            Con Ulpiano, agiliza la elaboración y el seguimiento de
-            expedientes sucesorios, ofreciendo al cliente diagramas y
-            visualizaciones que facilitan la comprensión de cada proceso.
+            Con Ulpiano, amplía tu oferta más allá del sepelio. Cuando la
+            familia necesita apoyo en la gestión de la herencia, tu funeraria
+            ofrece un camino completo — estructurado, digital y con el rigor
+            profesional que esperan.
           </p>
           <div
             className="reveal"
@@ -424,7 +424,7 @@ export function DespachosClient() {
               className="btn-ghost"
               style={{ color: "var(--white)" }}
             >
-              Más Información <ArrowIcon />
+              Quiero Saber Más <ArrowIcon />
             </Link>
           </div>
         </div>
@@ -441,7 +441,7 @@ export function DespachosClient() {
         <div className="container">
           <div className="reveal" style={{ marginBottom: "var(--space-10)" }}>
             <p className="eyebrow" style={{ color: "var(--slate)" }}>
-              PARA TU DESPACHO
+              PARA TU FUNERARIA
             </p>
             <h2
               className="h2"
@@ -451,7 +451,7 @@ export function DespachosClient() {
                 maxWidth: 700,
               }}
             >
-              ¿Por Qué Ulpiano para Abogados?
+              ¿Por Qué Ulpiano para Funerarias?
             </h2>
             <p
               className="body-lg"
@@ -462,12 +462,12 @@ export function DespachosClient() {
                 fontSize: 17,
               }}
             >
-              Automatiza la Gestión de Herencias, Visualiza la Distribución de
-              Bienes y Gana Eficiencia
+              Amplía tu Servicio con la Tramitación Sucesoria Digital, la
+              Documentación Procesada y la Fiscalidad Calculada
             </p>
           </div>
 
-          <div className="desp-features-grid">
+          <div className="fun-features-grid">
             {featureBlocks.map((block, i) => (
               <div
                 key={block.title}
@@ -567,7 +567,7 @@ export function DespachosClient() {
         }}
       >
         <div className="container">
-          <div className="desp-claims-grid">
+          <div className="fun-claims-grid">
             {claims.map((claim, i) => (
               <div
                 key={claim}
@@ -621,11 +621,11 @@ export function DespachosClient() {
                 marginTop: "var(--space-3)",
               }}
             >
-              Lo que cambia en tu despacho con Ulpiano
+              Lo que cambia en tu funeraria con Ulpiano
             </h2>
           </div>
 
-          <div className="desp-benefits-grid">
+          <div className="fun-benefits-grid">
             {benefits.map((benefit, i) => (
               <div
                 key={benefit.title}
@@ -679,7 +679,7 @@ export function DespachosClient() {
         }}
       >
         <div className="container">
-          <div className="desp-testimonials-grid">
+          <div className="fun-testimonials-grid">
             {testimonials.map((t, i) => (
               <div key={t.author} className="reveal" style={stagger(i + 1)}>
                 <blockquote
@@ -709,7 +709,6 @@ export function DespachosClient() {
                     — {t.author} | {t.location}
                   </footer>
                 </blockquote>
-                {/* Placeholder para capturas de diagramas */}
                 <div
                   style={{
                     marginTop: "var(--space-6)",
@@ -739,7 +738,7 @@ export function DespachosClient() {
               fontStyle: "italic",
             }}
           >
-            Pendiente: testimonios reales de abogados usuarios
+            Pendiente: testimonios reales de directores de funerarias
           </p>
         </div>
       </section>
@@ -760,8 +759,8 @@ export function DespachosClient() {
               textAlign: "center",
             }}
           >
-            Mejora la Experiencia de Tus Clientes y Digitaliza la Gestión
-            Sucesoria
+            Amplía tu Servicio Funerario con la Tramitación Sucesoria que tus
+            Clientes Necesitan
           </h2>
           <p
             className="reveal"
@@ -775,8 +774,8 @@ export function DespachosClient() {
               ...stagger(1),
             }}
           >
-            Descubre cómo Ulpiano puede agilizar tus casos de herencia y
-            ofrecer una presentación visual del patrimonio más impactante.
+            Descubre cómo Ulpiano puede integrar la gestión sucesoria en tu
+            oferta de servicios y diferenciarte en el mercado.
           </p>
           <div
             className="reveal"
@@ -831,12 +830,12 @@ export function DespachosClient() {
               EXPLORA NUESTRAS SOLUCIONES
             </p>
           </div>
-          <div className="desp-crosslinks-grid">
+          <div className="fun-crosslinks-grid">
             {[
               {
-                href: "/soluciones/planificacion-sucesoria",
-                label: "Planificación Sucesoria",
-                desc: "Módulo patrimonial completo",
+                href: "/soluciones/procesamiento-documental",
+                label: "Procesamiento Documental",
+                desc: "Documentos procesados automáticamente",
               },
               {
                 href: "/soluciones/fiscalidad-sucesoria",
@@ -885,27 +884,27 @@ export function DespachosClient() {
 
       {/* ─────────────── RESPONSIVE STYLES ─────────────── */}
       <style>{`
-        .desp-features-grid {
+        .fun-features-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: var(--space-8);
         }
-        .desp-claims-grid {
+        .fun-claims-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
           gap: var(--space-6);
         }
-        .desp-benefits-grid {
+        .fun-benefits-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: var(--space-6);
         }
-        .desp-testimonials-grid {
+        .fun-testimonials-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: var(--space-8);
         }
-        .desp-crosslinks-grid {
+        .fun-crosslinks-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: var(--space-6);
@@ -913,40 +912,40 @@ export function DespachosClient() {
         }
 
         @media (max-width: 1023px) {
-          .desp-features-grid {
+          .fun-features-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-          .desp-features-grid > :last-child {
+          .fun-features-grid > :last-child {
             grid-column: 1 / -1;
           }
-          .desp-crosslinks-grid {
+          .fun-crosslinks-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-          .desp-crosslinks-grid > :last-child {
+          .fun-crosslinks-grid > :last-child {
             grid-column: 1 / -1;
           }
         }
 
         @media (max-width: 767px) {
-          .desp-features-grid {
+          .fun-features-grid {
             grid-template-columns: 1fr;
           }
-          .desp-features-grid > :last-child {
+          .fun-features-grid > :last-child {
             grid-column: auto;
           }
-          .desp-benefits-grid {
+          .fun-benefits-grid {
             grid-template-columns: 1fr;
           }
-          .desp-testimonials-grid {
+          .fun-testimonials-grid {
             grid-template-columns: 1fr;
           }
-          .desp-claims-grid {
+          .fun-claims-grid {
             grid-template-columns: 1fr;
           }
-          .desp-crosslinks-grid {
+          .fun-crosslinks-grid {
             grid-template-columns: 1fr;
           }
-          .desp-crosslinks-grid > :last-child {
+          .fun-crosslinks-grid > :last-child {
             grid-column: auto;
           }
         }

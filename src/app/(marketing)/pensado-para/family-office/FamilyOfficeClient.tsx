@@ -56,91 +56,7 @@ function CheckIcon() {
   );
 }
 
-function ClipboardTreeIcon() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="var(--ulpiano-green)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-      <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
-      <path d="M12 11v6" />
-      <path d="M9 14h6" />
-    </svg>
-  );
-}
-
-function CalculatorChartIcon() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="var(--ulpiano-green)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <rect x="4" y="2" width="16" height="20" rx="2" />
-      <line x1="8" y1="6" x2="16" y2="6" />
-      <line x1="8" y1="10" x2="10" y2="10" />
-      <line x1="14" y1="10" x2="16" y2="10" />
-      <line x1="8" y1="14" x2="10" y2="14" />
-      <line x1="14" y1="14" x2="16" y2="14" />
-      <line x1="8" y1="18" x2="16" y2="18" />
-    </svg>
-  );
-}
-
-function DocumentPenIcon() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="var(--ulpiano-green)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-      <polyline points="14 2 14 8 20 8" />
-      <path d="M16 13l-4 4-2-2" />
-    </svg>
-  );
-}
-
-function EyeIcon() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="var(--ulpiano-green)"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-      <circle cx="12" cy="12" r="3" />
-    </svg>
-  );
-}
-
-function ClockIcon() {
+function CompassIcon() {
   return (
     <svg
       width="24"
@@ -154,12 +70,12 @@ function ClockIcon() {
       aria-hidden="true"
     >
       <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
+      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
     </svg>
   );
 }
 
-function ShieldCheckIcon() {
+function BuildingIcon() {
   return (
     <svg
       width="24"
@@ -172,8 +88,51 @@ function ShieldCheckIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      <polyline points="9 12 11 14 15 10" />
+      <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+      <path d="M9 22V12h6v10" />
+      <path d="M8 6h.01" />
+      <path d="M16 6h.01" />
+      <path d="M8 10h.01" />
+      <path d="M16 10h.01" />
+    </svg>
+  );
+}
+
+function PieChartIcon() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="var(--ulpiano-green)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
+      <path d="M22 12A10 10 0 0 0 12 2v10z" />
+    </svg>
+  );
+}
+
+function TargetIcon() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="var(--ulpiano-green)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
     </svg>
   );
 }
@@ -194,6 +153,46 @@ function LayersIcon() {
       <polygon points="12 2 2 7 12 12 22 7 12 2" />
       <polyline points="2 17 12 22 22 17" />
       <polyline points="2 12 12 17 22 12" />
+    </svg>
+  );
+}
+
+function ScaleIcon() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="var(--ulpiano-green)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 3v18" />
+      <path d="M4 7l8-4 8 4" />
+      <path d="M4 7l-1 8h6L8 7" />
+      <path d="M20 7l-1 8h-6l1-8" />
+    </svg>
+  );
+}
+
+function BriefcaseIcon() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="var(--ulpiano-green)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
     </svg>
   );
 }
@@ -242,97 +241,97 @@ function CheckCircleSmall() {
 
 const featureBlocks = [
   {
-    icon: <ClipboardTreeIcon />,
-    title: "Gestión Digital de Expedientes y Esquemas Sucesorios",
+    icon: <CompassIcon />,
+    title: "Planificación Sucesoria Pre-Mortem",
     subtitle:
-      "El expediente sucesorio completo, digitalizado y estructurado.",
+      "Los escenarios sucesorios, comparados. Antes de que sea urgente.",
     features: [
       {
-        title: "Paso a Paso Digital",
-        desc: "Define parámetros legales (legítimas, régimen foral) y añade datos de herederos y bienes.",
+        title: "Modelado Patrimonial Completo",
+        desc: "Inmuebles con cargas, productos financieros, participaciones societarias, activos digitales — todo valorado y estructurado en un inventario único. El patrimonio completo, visible de un vistazo.",
       },
       {
-        title: "Diagramas Interactivos",
-        desc: "Muestra el árbol familiar y la estructura patrimonial, facilitando la explicación al cliente y sorprendiendo con una experiencia clara y atractiva.",
+        title: "Escenarios Sucesorios Comparados",
+        desc: "Herencia directa vs. donación en vida vs. usufructo al cónyuge — el impacto fiscal de cada opción, lado a lado. La familia decide con datos, no con intuición.",
       },
     ],
   },
   {
-    icon: <CalculatorChartIcon />,
-    title: "Atribución de Bienes y Control Fiscal",
+    icon: <BuildingIcon />,
+    title: "Empresa Familiar y Patrimonio Complejo",
     subtitle:
-      "Distribución patrimonial y fiscalidad sucesoria, automatizadas.",
+      "Las participaciones distribuidas. La reducción del 95%, aplicada donde corresponde.",
     features: [
       {
-        title: "Reportes de Atribución",
-        desc: "Presenta un desglose detallado sobre la distribución de bienes y la obligación tributaria de cada beneficiario. Muestra la estructura del patrimonio y los herederos en un esquema claro y atractivo.",
+        title: "Participaciones Societarias con Impacto Fiscal",
+        desc: "Cómo se distribuyen las participaciones de la empresa familiar entre herederos. Con la reducción del 95% aplicada donde corresponde y el impacto fiscal de cada escenario calculado.",
       },
       {
-        title: "Simulaciones de Impuestos",
-        desc: "Calcula en segundos cuánto pagará cada heredero, considerando reducciones y bonificaciones autonómicas. Ajusta distribuciones en tiempo real para mostrar posibles variaciones en la carga fiscal.",
+        title: "Activos Digitales Integrados",
+        desc: "Criptomonedas, wallets, cuentas online — valorados a fecha de devengo y clasificados fiscalmente. Integrados en el caudal relicto como categoría de primer nivel, no como una nota al margen.",
       },
     ],
   },
   {
-    icon: <DocumentPenIcon />,
-    title: "Creación de Documentos y Firma",
+    icon: <PieChartIcon />,
+    title: "Visibilidad Patrimonial y Reporting",
     subtitle:
-      "De datos estructurados a documentos prácticamente definitivos.",
+      "El patrimonio completo, en un dashboard. Los informes, listos para el consejo familiar.",
     features: [
       {
-        title: "Automatización de Documentos",
-        desc: "Genera testamentos, pactos sucesorios y escrituras adaptadas a la normativa vigente, reduciendo tareas manuales.",
+        title: "Dashboard Patrimonial Consolidado",
+        desc: "Qué hay dentro del patrimonio, qué cargas tiene, cuál es el caudal relicto neto. Visible, actualizado, exportable. La foto completa para tomar decisiones.",
       },
       {
-        title: "Firma y Registro",
-        desc: "Acelera la formalización con documentos prácticamente definitivos, evitando correcciones de última hora.",
+        title: "Informes para el Consejo Familiar",
+        desc: "Reportes estructurados con escenarios sucesorios, impacto fiscal comparado y distribución patrimonial. Listos para la reunión. Claros para la familia.",
       },
     ],
   },
 ];
 
 const claims = [
-  "Las atribuciones sucesorias en tres minutos",
-  "La herencia legal meditada",
-  "La demanda por legítima preparada",
-  "La demanda por cuarta viudal preparada",
+  "Tres escenarios sucesorios comparados en una pantalla",
+  "El impacto fiscal de la donación en vida, calculado antes de decidir",
+  "La empresa familiar, distribuida con reducción del 95% aplicada",
+  "El patrimonio completo inventariado y valorado",
 ];
 
 const benefits = [
   {
-    icon: <EyeIcon />,
-    title: "Transparencia para el Cliente",
-    desc: "Ofrece diagramas claros y simulaciones en tiempo real, generando confianza y diferenciándote de la competencia.",
-  },
-  {
-    icon: <ClockIcon />,
-    title: "Mayor Eficiencia Interna",
-    desc: "Automatiza procesos y libera horas de trabajo manual.",
-  },
-  {
-    icon: <ShieldCheckIcon />,
-    title: "Reducción de Errores y Riesgos Legales",
-    desc: "Ulpiano refuerza la coherencia con la normativa sucesoria y actualizaciones forales.",
+    icon: <TargetIcon />,
+    title: "Planificación Proactiva",
+    desc: "No esperas al fallecimiento. Modelas escenarios hoy para decidir mejor mañana. La sucesión se planifica, no se improvisa.",
   },
   {
     icon: <LayersIcon />,
-    title: "Servicio Integral",
-    desc: "Combina el asesoramiento legal con una plataforma robusta que cubre desde la planificación patrimonial hasta la tramitación fiscal.",
+    title: "Visibilidad Patrimonial Completa",
+    desc: "Inmuebles, financieros, empresa familiar, activos digitales — todo en un inventario estructurado y valorado. Sin hojas de cálculo dispersas.",
+  },
+  {
+    icon: <ScaleIcon />,
+    title: "Decisiones Fiscales Informadas",
+    desc: "Cada escenario sucesorio con su impacto fiscal calculado. Herencia directa, donación, usufructo — la familia decide con datos sobre la mesa.",
+  },
+  {
+    icon: <BriefcaseIcon />,
+    title: "Continuidad de la Empresa Familiar",
+    desc: "Cómo se distribuyen las participaciones, qué reducciones aplican, qué impacto fiscal tiene cada opción. La empresa familiar no se improvisa.",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "Desde que usamos Ulpiano, la preparación de un expediente sucesorio nos lleva la mitad de tiempo. Y el cliente entiende lo que paga.",
-    author: "Marta R., Abogada",
-    location: "Despacho en Girona",
+      "Antes de Ulpiano, preparar los escenarios sucesorios para un consejo familiar nos llevaba semanas. Ahora presentamos tres opciones comparadas con impacto fiscal en una sola reunión.",
+    author: "Elena V., Directora de Planificación",
+    location: "Family Office en Barcelona",
   },
   {
     quote:
-      "La visualización del árbol familiar y las simulaciones fiscales cambiaron la forma en que presentamos las herencias a nuestros clientes.",
-    author: "Jordi P., Abogado Civilista",
-    location: "Barcelona",
+      "La integración de activos digitales en el inventario patrimonial fue decisiva para nosotros. Ninguna otra plataforma los trata como categoría fiscal real.",
+    author: "David R., Asesor Patrimonial",
+    location: "Family Office en Madrid",
   },
 ];
 
@@ -340,7 +339,7 @@ const testimonials = [
    MAIN COMPONENT
    ============================================= */
 
-export function DespachosClient() {
+export function FamilyOfficeClient() {
   const revealRef = useReveal();
   const stagger = (i: number) => ({ transitionDelay: `${i * 100}ms` });
 
@@ -378,7 +377,7 @@ export function DespachosClient() {
               marginBottom: "var(--space-4)",
             }}
           >
-            PENSADO PARA ABOGADOS
+            PENSADO PARA FAMILY OFFICES
           </p>
           <h1
             className="h1 reveal"
@@ -389,8 +388,8 @@ export function DespachosClient() {
               ...stagger(1),
             }}
           >
-            Optimiza tus Expedientes de Herencia y Ofrece a tus Clientes la
-            Claridad que Esperan
+            El Impacto Fiscal de Cada Escenario Sucesorio, Comparado. Antes de
+            que Sea Urgente.
           </h1>
           <p
             className="body-lg reveal"
@@ -401,9 +400,10 @@ export function DespachosClient() {
               ...stagger(2),
             }}
           >
-            Con Ulpiano, agiliza la elaboración y el seguimiento de
-            expedientes sucesorios, ofreciendo al cliente diagramas y
-            visualizaciones que facilitan la comprensión de cada proceso.
+            Con Ulpiano, modelas el patrimonio completo — inmuebles,
+            financieros, empresa familiar, activos digitales — y comparas
+            escenarios sucesorios con su impacto fiscal calculado. La sucesión
+            se planifica, no se improvisa.
           </p>
           <div
             className="reveal"
@@ -441,7 +441,7 @@ export function DespachosClient() {
         <div className="container">
           <div className="reveal" style={{ marginBottom: "var(--space-10)" }}>
             <p className="eyebrow" style={{ color: "var(--slate)" }}>
-              PARA TU DESPACHO
+              PARA TU FAMILY OFFICE
             </p>
             <h2
               className="h2"
@@ -451,7 +451,7 @@ export function DespachosClient() {
                 maxWidth: 700,
               }}
             >
-              ¿Por Qué Ulpiano para Abogados?
+              ¿Por Qué Ulpiano para Family Offices?
             </h2>
             <p
               className="body-lg"
@@ -462,12 +462,12 @@ export function DespachosClient() {
                 fontSize: 17,
               }}
             >
-              Automatiza la Gestión de Herencias, Visualiza la Distribución de
-              Bienes y Gana Eficiencia
+              Planificación Pre-Mortem, Escenarios Comparados y Patrimonio
+              Complejo Estructurado
             </p>
           </div>
 
-          <div className="desp-features-grid">
+          <div className="fo-features-grid">
             {featureBlocks.map((block, i) => (
               <div
                 key={block.title}
@@ -567,7 +567,7 @@ export function DespachosClient() {
         }}
       >
         <div className="container">
-          <div className="desp-claims-grid">
+          <div className="fo-claims-grid">
             {claims.map((claim, i) => (
               <div
                 key={claim}
@@ -621,11 +621,11 @@ export function DespachosClient() {
                 marginTop: "var(--space-3)",
               }}
             >
-              Lo que cambia en tu despacho con Ulpiano
+              Lo que cambia en tu family office con Ulpiano
             </h2>
           </div>
 
-          <div className="desp-benefits-grid">
+          <div className="fo-benefits-grid">
             {benefits.map((benefit, i) => (
               <div
                 key={benefit.title}
@@ -679,7 +679,7 @@ export function DespachosClient() {
         }}
       >
         <div className="container">
-          <div className="desp-testimonials-grid">
+          <div className="fo-testimonials-grid">
             {testimonials.map((t, i) => (
               <div key={t.author} className="reveal" style={stagger(i + 1)}>
                 <blockquote
@@ -709,7 +709,6 @@ export function DespachosClient() {
                     — {t.author} | {t.location}
                   </footer>
                 </blockquote>
-                {/* Placeholder para capturas de diagramas */}
                 <div
                   style={{
                     marginTop: "var(--space-6)",
@@ -725,7 +724,7 @@ export function DespachosClient() {
                     fontWeight: 500,
                   }}
                 >
-                  [Pendiente: captura de diagrama sucesorio]
+                  [Pendiente: captura de dashboard patrimonial]
                 </div>
               </div>
             ))}
@@ -739,7 +738,7 @@ export function DespachosClient() {
               fontStyle: "italic",
             }}
           >
-            Pendiente: testimonios reales de abogados usuarios
+            Pendiente: testimonios reales de asesores de family offices
           </p>
         </div>
       </section>
@@ -760,8 +759,8 @@ export function DespachosClient() {
               textAlign: "center",
             }}
           >
-            Mejora la Experiencia de Tus Clientes y Digitaliza la Gestión
-            Sucesoria
+            La Próxima Reunión del Consejo Familiar, con los Escenarios
+            Sucesorios sobre la Mesa
           </h2>
           <p
             className="reveal"
@@ -775,8 +774,9 @@ export function DespachosClient() {
               ...stagger(1),
             }}
           >
-            Descubre cómo Ulpiano puede agilizar tus casos de herencia y
-            ofrecer una presentación visual del patrimonio más impactante.
+            Descubre cómo Ulpiano puede estructurar la planificación sucesoria
+            de tus clientes y ofrecer escenarios comparados con impacto fiscal
+            real.
           </p>
           <div
             className="reveal"
@@ -831,7 +831,7 @@ export function DespachosClient() {
               EXPLORA NUESTRAS SOLUCIONES
             </p>
           </div>
-          <div className="desp-crosslinks-grid">
+          <div className="fo-crosslinks-grid">
             {[
               {
                 href: "/soluciones/planificacion-sucesoria",
@@ -844,9 +844,9 @@ export function DespachosClient() {
                 desc: "Motor ISD automatizado",
               },
               {
-                href: "/soluciones/documentacion-sucesoria",
-                label: "Documentación Sucesoria",
-                desc: "Generación documental inteligente",
+                href: "/soluciones/activos-digitales",
+                label: "Activos Digitales",
+                desc: "Criptopatrimonio inventariado y valorado",
               },
             ].map((link, i) => (
               <Link
@@ -885,27 +885,27 @@ export function DespachosClient() {
 
       {/* ─────────────── RESPONSIVE STYLES ─────────────── */}
       <style>{`
-        .desp-features-grid {
+        .fo-features-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: var(--space-8);
         }
-        .desp-claims-grid {
+        .fo-claims-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
           gap: var(--space-6);
         }
-        .desp-benefits-grid {
+        .fo-benefits-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: var(--space-6);
         }
-        .desp-testimonials-grid {
+        .fo-testimonials-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: var(--space-8);
         }
-        .desp-crosslinks-grid {
+        .fo-crosslinks-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: var(--space-6);
@@ -913,40 +913,40 @@ export function DespachosClient() {
         }
 
         @media (max-width: 1023px) {
-          .desp-features-grid {
+          .fo-features-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-          .desp-features-grid > :last-child {
+          .fo-features-grid > :last-child {
             grid-column: 1 / -1;
           }
-          .desp-crosslinks-grid {
+          .fo-crosslinks-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-          .desp-crosslinks-grid > :last-child {
+          .fo-crosslinks-grid > :last-child {
             grid-column: 1 / -1;
           }
         }
 
         @media (max-width: 767px) {
-          .desp-features-grid {
+          .fo-features-grid {
             grid-template-columns: 1fr;
           }
-          .desp-features-grid > :last-child {
+          .fo-features-grid > :last-child {
             grid-column: auto;
           }
-          .desp-benefits-grid {
+          .fo-benefits-grid {
             grid-template-columns: 1fr;
           }
-          .desp-testimonials-grid {
+          .fo-testimonials-grid {
             grid-template-columns: 1fr;
           }
-          .desp-claims-grid {
+          .fo-claims-grid {
             grid-template-columns: 1fr;
           }
-          .desp-crosslinks-grid {
+          .fo-crosslinks-grid {
             grid-template-columns: 1fr;
           }
-          .desp-crosslinks-grid > :last-child {
+          .fo-crosslinks-grid > :last-child {
             grid-column: auto;
           }
         }

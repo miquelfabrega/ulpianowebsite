@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
+import { NotariasClient } from "./NotariasClient";
+
+export const metadata: Metadata = {
+  title: "Para Notarías | Gestión Digital de Herencias — Ulpiano",
+  description:
+    "El expediente post-testamento activo, la documentación centralizada y cifrada, la generación de escrituras desde datos estructurados. Ulpiano para notarías.",
+  alternates: {
+    canonical: "https://ulpiano.es/pensado-para/notarias",
+  },
+};
+
 export default function NotariasPage() {
-  return (
-    <div className="pt-16 min-h-screen flex items-center justify-center">
-      <h1 className="text-2xl font-bold text-ink">Notarías — En construcción</h1>
-    </div>
-  );
+  return <NotariasClient />;
 }

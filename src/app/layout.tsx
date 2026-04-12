@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import DataLayerRouteTracker from "@/components/DataLayerRouteTracker";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -140,6 +141,7 @@ gtag('set','url_passthrough',true);
         <main className="flex flex-col min-h-screen">{children}</main>
         <Footer />
         <CookieBanner />
+        <DataLayerRouteTracker />
         <GoogleTagManager gtmId="GTM-MBNWK2CW" />
       </body>
     </html>

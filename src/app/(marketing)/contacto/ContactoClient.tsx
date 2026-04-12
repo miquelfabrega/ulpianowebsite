@@ -113,6 +113,17 @@ export function ContactoClient() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [formError, setFormError] = useState("");
+  const formStartedRef = useRef(false);
+
+  const dl = useRef(
+    () => (window as Window & { dataLayer?: Record<string, unknown>[] }).dataLayer,
+  );
+
+  function handleFormStarted() {
+    if (formStartedRef.current) return;
+    formStartedRef.current = true;
+    dl.current()?.push({ event: "contact_form_started" });
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -137,12 +148,11 @@ export function ContactoClient() {
       if (!res.ok) throw new Error("Error al enviar");
       setSubmitted(true);
 
-      const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer?.push({
+      dl.current()?.push({
         event: "contact_form_submitted",
         asunto: data.subject,
       });
-      w.dataLayer?.push({
+      dl.current()?.push({
         event: "generate_lead",
         lead_type: "contact",
         currency: "EUR",
@@ -150,6 +160,11 @@ export function ContactoClient() {
       });
     } catch {
       setFormError("Ha ocurrido un error. Inténtalo de nuevo.");
+      dl.current()?.push({
+        event: "form_error",
+        form_name: "contact",
+        error_type: "submission",
+      });
     } finally {
       setSending(false);
     }
@@ -309,6 +324,7 @@ export function ContactoClient() {
                           name="name"
                           required
                           placeholder="Tu nombre"
+                          onFocus={handleFormStarted}
                           style={inputStyle}
                         />
                       </div>

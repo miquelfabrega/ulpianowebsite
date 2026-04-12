@@ -338,7 +338,7 @@ export default function Header() {
           >
             Iniciar sesión
           </Link>
-          <ButtonPrimary href="/demo" size="sm">
+          <ButtonPrimary href="/demo" size="sm" trackLocation="header">
             Reserva tu Demo
           </ButtonPrimary>
         </div>
@@ -431,7 +431,7 @@ export default function Header() {
               Iniciar sesión
             </Link>
             <div className="mt-3">
-              <ButtonPrimary href="/demo" size="sm" className="w-full">
+              <ButtonPrimary href="/demo" size="sm" className="w-full" trackLocation="mobile_menu">
                 Reserva tu Demo
               </ButtonPrimary>
             </div>

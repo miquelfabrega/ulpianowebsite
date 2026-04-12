@@ -1,9 +1,10 @@
 # Ulpiano — Marketing Tracking Plan
 
-**Versión:** 1.0.0
+**Versión:** 1.1.0
 **Fecha:** 12 de abril de 2026
-**Herramientas:** GA4 + Google Tag Manager (GTM-MBNWK2CW)
+**Herramientas:** GA4 (G-FW9TKGSK59) + Google Tag Manager (GTM-MBNWK2CW)
 **Compliance:** RGPD / Consent Mode v2
+**GA4 Measurement ID:** `G-FW9TKGSK59`
 
 ---
 
@@ -30,7 +31,30 @@
 
 ## 2. Consent Mode v2 (RGPD)
 
-Estado por defecto **antes** del consentimiento:
+### Estado de implementación: ✅ COMPLETADO
+
+**Componentes desplegados:**
+
+| Pieza | Archivo | Estado |
+|-------|---------|--------|
+| Script Consent Mode default | `src/app/layout.tsx` (`<head>`) | ✅ En producción |
+| Restauración desde cookie `gt_consent` | `src/app/layout.tsx` (`<head>`) | ✅ En producción |
+| Cookie Banner (barra + modal) | `src/components/CookieBanner.tsx` | ✅ En producción |
+| Enlace "Ajustes de cookies" en footer | `src/components/layout/Footer.tsx` | ✅ En producción |
+| `pushConsent()` bridge a GTM | `src/components/CookieBanner.tsx` | ✅ En producción |
+
+**Contrato técnico de la cookie:**
+
+| Atributo | Valor |
+|----------|-------|
+| Nombre | `gt_consent` |
+| Formato | JSON: `{ necessary, analytics, marketing }` |
+| Caducidad | 182 días |
+| Path | `/` |
+| SameSite | `Lax` |
+| Secure | `true` |
+
+**Estado por defecto (antes del consentimiento):**
 
 | Señal | Estado por defecto | Tras consentimiento |
 |-------|-------------------|---------------------|
@@ -41,6 +65,11 @@ Estado por defecto **antes** del consentimiento:
 | `functionality_storage` | `granted` | `granted` |
 | `security_storage` | `granted` | `granted` |
 
+**Configuración adicional:**
+- `ads_data_redaction: true` — redacta datos de ads cuando consent está denegado
+- `url_passthrough: true` — preserva parámetros de campaña entre páginas sin cookies
+- `wait_for_update: 500` — espera 500ms a que el CMP actualice antes de procesar
+
 > GTM envía pings sin cookies cuando el consentimiento está denegado (modelado de conversiones), cumpliendo con la DMA y el RGPD.
 
 ---
@@ -49,7 +78,7 @@ Estado por defecto **antes** del consentimiento:
 
 ### Content Group (ámbito: evento)
 
-Clasificación automática por URL:
+Clasificación automática por URL — implementada en `CJS - Content Group` (variable GTM) y en `DataLayerRouteTracker.tsx`:
 
 | URL Pattern | Content Group | Propósito |
 |-------------|--------------|-----------|
@@ -85,41 +114,40 @@ Clasificación automática por URL:
 
 ### 4.1 Eventos del marketing site
 
-| Evento | Descripción | Propiedades | Trigger |
-|--------|-------------|-------------|---------|
-| `page_view` | Página cargada (enhanced) | `page_title`, `page_path`, `content_group`, `page_type` | Todas las páginas |
-| `scroll_depth` | Scroll a umbral | `percent_scrolled`, `page_path`, `content_group` | 25%, 50%, 75%, 100% |
-| `cta_clicked` | Click en CTA | `button_text`, `cta_location`, `destination_url`, `page_path` | dataLayer push |
-| `navigation_clicked` | Click en navegación | `menu_item`, `menu_section` | dataLayer push |
-| `outbound_link_clicked` | Click a sitio externo | `link_url`, `link_text`, `page_path` | Links salientes |
+| Evento | Descripción | Propiedades | Trigger | Estado |
+|--------|-------------|-------------|---------|--------|
+| `page_view` | Página cargada (enhanced) | `page_title`, `page_path`, `content_group`, `page_type` | Todas las páginas | ✅ GTM auto |
+| `scroll_depth` | Scroll a umbral | `percent_scrolled`, `page_path`, `content_group` | 25%, 50%, 75%, 100% | ✅ GTM auto |
+| `cta_clicked` | Click en CTA | `button_text`, `cta_location`, `destination_url`, `page_path` | dataLayer push | ✅ ButtonPrimary.tsx |
+| `navigation_clicked` | Click en navegación | `menu_item`, `menu_section` | dataLayer push | ⏳ Pendiente |
+| `outbound_link_clicked` | Click a sitio externo | `link_url`, `link_text`, `page_path` | Links salientes | ✅ GTM auto |
 
 ### 4.2 Eventos de formularios
 
-| Evento | Descripción | Propiedades | Trigger |
-|--------|-------------|-------------|---------|
-| `demo_form_started` | Primer campo del formulario de demo | `page_path` | dataLayer push (focus) |
-| `demo_form_submitted` | Demo solicitada con éxito | `empresa`, `cargo`, `expedientes_ano`, `page_path` | dataLayer push (submit) |
-| `contact_form_started` | Primer campo del formulario de contacto | `page_path` | dataLayer push (focus) |
-| `contact_form_submitted` | Contacto enviado con éxito | `asunto`, `page_path` | dataLayer push (submit) |
-| `lead_magnet_download` | Lead magnet descargado | `lead_magnet_name`, `lead_source`, `page_path` | dataLayer push (submit) |
-| `form_error` | Error de validación | `form_name`, `error_type`, `field_name` | dataLayer push |
+| Evento | Descripción | Propiedades | Trigger | Estado |
+|--------|-------------|-------------|---------|--------|
+| `demo_form_started` | Primer campo del formulario de demo | `page_path` | onFocus primer campo | ✅ DemoClient.tsx |
+| `demo_form_submitted` | Demo solicitada con éxito | `empresa` | dataLayer push (submit) | ✅ DemoClient.tsx |
+| `contact_form_started` | Primer campo del formulario de contacto | `page_path` | onFocus primer campo | ✅ ContactoClient.tsx |
+| `contact_form_submitted` | Contacto enviado con éxito | `asunto` | dataLayer push (submit) | ✅ ContactoClient.tsx |
+| `form_error` | Error de envío | `form_name`, `error_type` | catch del submit | ✅ Ambos formularios |
 
 ### 4.3 Eventos de conversión (Key Events en GA4)
 
-| Evento | Descripción | Propiedades | Valor | Counting |
-|--------|-------------|-------------|-------|----------|
-| `generate_lead` | Conversión principal | `lead_type` (demo/contact/lead_magnet), `currency`, `value` | 150€ (demo) / 50€ (contact) / 25€ (lead_magnet) | Una por sesión |
-| `pricing_page_viewed` | Interés en precios | `source`, `referrer` | — | Una por sesión |
+| Evento | Descripción | Propiedades | Valor | Estado |
+|--------|-------------|-------------|-------|--------|
+| `generate_lead` | Conversión principal | `lead_type` (demo/contact), `currency`, `value` | 150€ (demo) / 50€ (contact) | ✅ dataLayer — ⏳ Marcar Key Event en GA4 |
+| `pricing_page_viewed` | Interés en precios | `source`, `referrer` | — | ✅ GTM trigger PV /precios |
 
 ### 4.4 Eventos de engagement
 
-| Evento | Descripción | Propiedades | Trigger |
-|--------|-------------|-------------|---------|
-| `engaged_session_30s` | Sesión cualificada (30s+) | `page_path`, `content_group` | Timer 30s |
-| `solution_explored` | Visita a página de solución | `solution_name` | PV /soluciones/* |
-| `segment_explored` | Visita a página de segmento | `segment_name` | PV /pensado-para/* |
-| `modelo_explored` | Visita a página de modelo | `modelo_type` | PV /modelos/* |
-| `login_portal_clicked` | Click en acceso al portal | `portal_type` | dataLayer push |
+| Evento | Descripción | Propiedades | Trigger | Estado |
+|--------|-------------|-------------|---------|--------|
+| `engaged_session_30s` | Sesión cualificada (30s+) | `page_path`, `content_group` | Timer 30s | ✅ GTM auto |
+| `solution_explored` | Visita a página de solución | `solution_name` | dataLayer push (auto) | ✅ DataLayerRouteTracker.tsx |
+| `segment_explored` | Visita a página de segmento | `segment_name` | dataLayer push (auto) | ✅ DataLayerRouteTracker.tsx |
+| `modelo_explored` | Visita a página de modelo | `modelo_type` | dataLayer push (auto) | ✅ DataLayerRouteTracker.tsx |
+| `login_portal_clicked` | Click en acceso al portal | `portal_type` | dataLayer push | ⏳ Pendiente |
 
 ---
 
@@ -131,16 +159,16 @@ Clasificación automática por URL:
 page_view (cualquiera)
     │
     ▼
-cta_clicked (destino: /demo)
+cta_clicked (destino: /demo)        ← ButtonPrimary con trackLocation
     │
     ▼
 page_view (/demo)
     │
     ▼
-demo_form_started
+demo_form_started                    ← onFocus primer campo
     │
     ▼
-demo_form_submitted
+demo_form_submitted                  ← submit exitoso
     │
     ▼
 generate_lead (lead_type: demo, value: 150)
@@ -152,52 +180,34 @@ generate_lead (lead_type: demo, value: 150)
 page_view (cualquiera)
     │
     ▼
-cta_clicked (destino: /contacto)
+cta_clicked (destino: /contacto)     ← ButtonPrimary con trackLocation
     │
     ▼
 page_view (/contacto)
     │
     ▼
-contact_form_started
+contact_form_started                 ← onFocus primer campo
     │
     ▼
-contact_form_submitted
+contact_form_submitted               ← submit exitoso
     │
     ▼
 generate_lead (lead_type: contact, value: 50)
 ```
 
-### Funnel 3: Lead Magnet Download
-
-```
-page_view (cualquiera / LinkedIn / email)
-    │
-    ▼
-page_view (/recursos/checklist-expediente-sucesorio)
-    │
-    ▼
-lead_magnet_download (lead_magnet_name: checklist-sucesorio-cataluna)
-    │
-    ▼
-generate_lead (lead_type: lead_magnet, value: 25)
-    │
-    ▼
-[Email nurture sequence: 4 emails en 10 días]
-    │
-    ▼
-demo_form_submitted (conversión secundaria)
-```
-
-### Funnel 4: Content Engagement → Conversión
+### Funnel 3: Content Engagement → Conversión
 
 ```
 page_view (solución / segmento / modelo)
     │
     ▼
-scroll_depth (50%+)
+solution_explored / segment_explored / modelo_explored  ← DataLayerRouteTracker
     │
     ▼
-cta_clicked
+scroll_depth (50%+)                  ← GTM automático
+    │
+    ▼
+cta_clicked                          ← ButtonPrimary
     │
     ▼
 page_view (/demo o /contacto)
@@ -241,14 +251,35 @@ https://ulpiano.es/?utm_source=colegio_abogados_girona&utm_medium=referral&utm_c
 
 ## 7. Key Events (Conversiones en GA4)
 
-Marcar como Key Events en GA4 Admin:
+### ⏳ PENDIENTE — Marcar en GA4 Admin
 
-| Key Event | Evento GA4 | Valor | Método de conteo |
-|-----------|-----------|-------|-----------------|
-| Solicitud de demo | `generate_lead` (lead_type=demo) | 150€ | Una por sesión |
-| Formulario de contacto | `generate_lead` (lead_type=contact) | 50€ | Una por sesión |
-| Vista de precios | `pricing_page_viewed` | — | Una por sesión |
-| Sesión cualificada | `engaged_session_30s` | — | Una por sesión |
+**Ruta:** GA4 → Admin → Events → toggle "Mark as key event"
+
+Los eventos llegarán a GA4 automáticamente una vez publiques el contenedor GTM. Para marcarlos como Key Events:
+
+**Paso 1:** Ve a [analytics.google.com](https://analytics.google.com) → selecciona la propiedad de Ulpiano
+
+**Paso 2:** Admin (engranaje) → en la columna "Property", haz clic en **Events**
+
+**Paso 3:** Espera a que aparezcan los eventos (pueden tardar hasta 24-48h desde la primera vez que disparan). Busca estos 4:
+
+| Key Event | Evento a buscar | Toggle | Valor recomendado |
+|-----------|----------------|--------|-------------------|
+| Solicitud de demo | `generate_lead` | ✅ Activar | 150€ |
+| Vista de precios | `pricing_page_viewed` | ✅ Activar | — |
+| Sesión cualificada | `engaged_session_30s` | ✅ Activar | — |
+
+> **Nota sobre `generate_lead`:** Este evento cubre tanto demos como contactos, diferenciados por el parámetro `lead_type`. El valor (150€ o 50€) ya se envía desde el dataLayer, así que GA4 lo registra automáticamente por evento.
+
+**Paso 4:** Para asignar valor monetario a `generate_lead`:
+1. En Admin → Events → haz clic en `generate_lead`
+2. Activa "Use event-level currency and value" (si está disponible)
+3. O bien: deja que el valor venga del dataLayer (ya configurado con `currency: EUR` y `value: 150/50`)
+
+**Paso 5:** Si vas a usar Google Ads, vincula GA4 con Google Ads:
+1. Admin → Product links → Google Ads
+2. Enlaza la cuenta
+3. Los Key Events aparecerán automáticamente como conversiones importables en Google Ads
 
 ### Valores de conversión
 
@@ -273,121 +304,88 @@ Los valores asignados permiten optimización de pujas en Google Ads por ROAS, ba
 
 ---
 
-## 9. Implementación — dataLayer pushes necesarios en Next.js
+## 9. Implementación — Estado actual del código
 
-### 9.1 Enriquecimiento de página (en layout o componente global)
+### Mapa de archivos modificados
 
-```javascript
-window.dataLayer = window.dataLayer || [];
-dataLayer.push({
-  'event': 'page_data_ready',
-  'content_group': '<valor_calculado>',
-  'page_type': '<valor_calculado>'
-});
-```
+| Archivo | Eventos implementados | Método |
+|---------|----------------------|--------|
+| `src/app/layout.tsx` | Consent Mode v2 default + restauración cookie | Script inline en `<head>` |
+| `src/components/CookieBanner.tsx` | `consent_update` | `pushConsent()` → `gtag('consent', 'update')` |
+| `src/components/layout/Footer.tsx` | Apertura modal cookies | `CustomEvent('open-cookie-settings')` |
+| `src/components/buttons/ButtonPrimary.tsx` | `cta_clicked` | `trackCta()` en onClick, prop `trackLocation` |
+| `src/components/layout/Header.tsx` | `cta_clicked` via ButtonPrimary | `trackLocation="header"` / `"mobile_menu"` |
+| `src/components/DataLayerRouteTracker.tsx` | `solution_explored`, `segment_explored`, `modelo_explored` | Auto-detección por pathname en useEffect |
+| `src/app/(marketing)/demo/DemoClient.tsx` | `demo_form_started`, `demo_form_submitted`, `generate_lead`, `form_error` | onFocus, onSubmit, catch |
+| `src/app/(marketing)/contacto/ContactoClient.tsx` | `contact_form_started`, `contact_form_submitted`, `generate_lead`, `form_error` | onFocus, onSubmit, catch |
 
-### 9.2 CTA clicked (en componente ButtonPrimary)
+### Patrón para futuros formularios
 
-```javascript
-dataLayer.push({
-  'event': 'cta_clicked',
-  'button_text': 'Solicita tu demo gratuita',
-  'cta_location': 'hero',
-  'destination_url': '/demo'
-});
-```
-
-### 9.3 Formulario de demo (en DemoClient.tsx)
+Cualquier formulario nuevo debe replicar este patrón:
 
 ```javascript
-// Al hacer focus en el primer campo
-dataLayer.push({ 'event': 'demo_form_started' });
+const formStartedRef = useRef(false);
+const dl = useRef(
+  () => (window as Window & { dataLayer?: Record<string, unknown>[] }).dataLayer,
+);
 
-// Al enviar con éxito
-dataLayer.push({
-  'event': 'demo_form_submitted',
-  'empresa': formData.empresa,
-  'cargo': formData.cargo,
-  'expedientes_ano': formData.expedientesAno
-});
+function handleFormStarted() {
+  if (formStartedRef.current) return;
+  formStartedRef.current = true;
+  dl.current()?.push({ event: '{nombre}_form_started' });
+}
 
-// Conversión
-dataLayer.push({
-  'event': 'generate_lead',
-  'lead_type': 'demo',
-  'currency': 'EUR',
-  'value': 150
-});
+// En el submit exitoso:
+dl.current()?.push({ event: '{nombre}_form_submitted', ...propiedades });
+dl.current()?.push({ event: 'generate_lead', lead_type: '{tipo}', currency: 'EUR', value: {X} });
+
+// En el catch de error:
+dl.current()?.push({ event: 'form_error', form_name: '{nombre}', error_type: 'submission' });
+
+// En el primer campo del formulario:
+<input onFocus={handleFormStarted} ... />
 ```
 
-### 9.4 Formulario de contacto (en ContactoClient.tsx)
+### Patrón para nuevos CTAs (ButtonPrimary)
 
-```javascript
-// Al hacer focus en el primer campo
-dataLayer.push({ 'event': 'contact_form_started' });
-
-// Al enviar con éxito
-dataLayer.push({
-  'event': 'contact_form_submitted',
-  'asunto': formData.asunto
-});
-
-// Conversión
-dataLayer.push({
-  'event': 'generate_lead',
-  'lead_type': 'contact',
-  'currency': 'EUR',
-  'value': 50
-});
+```jsx
+<ButtonPrimary href="/demo" trackLocation="hero">
+  Reserva tu Demo
+</ButtonPrimary>
 ```
 
-### 9.5 Login portal (en LoginClient o página de login)
-
-```javascript
-dataLayer.push({
-  'event': 'login_portal_clicked',
-  'portal_type': 'app_principal'  // o 'cliente', según corresponda
-});
-```
-
-### 9.6 Error de formulario
-
-```javascript
-dataLayer.push({
-  'event': 'form_error',
-  'form_name': 'demo',
-  'error_type': 'validation',
-  'field_name': 'email'
-});
-```
+Si `trackLocation` no se pasa, el evento se dispara igual pero con `cta_location: "unknown"`.
 
 ---
 
 ## 10. Estructura del contenedor GTM
 
+### Archivo: `gtm-container-ulpiano.json`
+
+**GA4 Measurement ID:** `G-FW9TKGSK59`
+
 ### Tags (18)
 
 | # | Nombre | Tipo | Trigger | Notas |
 |---|--------|------|---------|-------|
-| 1 | GA4 - Config - Base | GA4 Config | All Pages | Measurement ID, send_page_view, consent mode |
-| 2 | GA4 - Event - CTA Clicked | GA4 Event | CE: cta_clicked | button_text, cta_location, destination_url |
-| 3 | GA4 - Event - Demo Requested | GA4 Event | CE: demo_form_submitted | empresa, cargo, expedientes_ano |
-| 4 | GA4 - Event - Contact Submitted | GA4 Event | CE: contact_form_submitted | asunto |
-| 5 | GA4 - Event - Demo Form Started | GA4 Event | CE: demo_form_started | — |
-| 6 | GA4 - Event - Contact Form Started | GA4 Event | CE: contact_form_started | — |
-| 7 | GA4 - Event - Scroll Depth | GA4 Event | Scroll Depth 25/50/75/100 | percent_scrolled, content_group |
-| 8 | GA4 - Event - Outbound Link | GA4 Event | Click: Outbound Links | link_url, link_text |
-| 9 | GA4 - Event - Pricing Viewed | GA4 Event | PV: /precios | — |
-| 10 | GA4 - Event - Login Portal | GA4 Event | CE: login_portal_clicked | portal_type |
-| 11 | GA4 - Event - Engaged 30s | GA4 Event | Timer: 30s | content_group |
-| 12 | GA4 - Event - Navigation Clicked | GA4 Event | CE: navigation_clicked | menu_item, menu_section |
-| 13 | GA4 - Event - Form Error | GA4 Event | CE: form_error | form_name, error_type, field_name |
-| 14 | GA4 - Event - Generate Lead | GA4 Event | CE: generate_lead | lead_type, value, currency |
-| 15 | GA4 - Event - Solution Explored | GA4 Event | CE: solution_explored | solution_name |
-| 16 | GA4 - Event - Segment Explored | GA4 Event | CE: segment_explored | segment_name |
-| 17 | GA4 - Event - Modelo Explored | GA4 Event | CE: modelo_explored | modelo_type |
-| 18 | GA4 - Event - Lead Magnet Download | GA4 Event | CE: lead_magnet_download | lead_magnet_name, lead_source |
-| 19 | HTML - Consent Mode Default | Custom HTML | Consent Init (All Pages, prioridad) | Consent Mode v2 |
+| 1 | HTML - Consent Mode v2 Default | Custom HTML | DOM Ready (prioridad 999) | Ya redundante con script en `<head>`, se puede eliminar |
+| 2 | GA4 - Config - Base | GA4 Config | All Pages | Measurement ID, send_page_view, content_group, page_type |
+| 3 | GA4 - Event - CTA Clicked | GA4 Event | CE: cta_clicked | button_text, cta_location, destination_url |
+| 4 | GA4 - Event - Demo Requested | GA4 Event | CE: demo_form_submitted | empresa |
+| 5 | GA4 - Event - Contact Submitted | GA4 Event | CE: contact_form_submitted | asunto |
+| 6 | GA4 - Event - Demo Form Started | GA4 Event | CE: demo_form_started | — |
+| 7 | GA4 - Event - Contact Form Started | GA4 Event | CE: contact_form_started | — |
+| 8 | GA4 - Event - Scroll Depth | GA4 Event | Scroll Depth 25/50/75/100 | percent_scrolled, content_group |
+| 9 | GA4 - Event - Outbound Link | GA4 Event | Click: Outbound Links | link_url, link_text |
+| 10 | GA4 - Event - Pricing Viewed | GA4 Event | PV: /precios | — |
+| 11 | GA4 - Event - Login Portal | GA4 Event | CE: login_portal_clicked | portal_type |
+| 12 | GA4 - Event - Engaged 30s | GA4 Event | Timer: 30s | content_group |
+| 13 | GA4 - Event - Navigation Clicked | GA4 Event | CE: navigation_clicked | menu_item, menu_section |
+| 14 | GA4 - Event - Form Error | GA4 Event | CE: form_error | form_name, error_type, field_name |
+| 15 | GA4 - Event - Generate Lead | GA4 Event | CE: generate_lead | lead_type, value, currency |
+| 16 | GA4 - Event - Solution Explored | GA4 Event | CE: solution_explored | solution_name |
+| 17 | GA4 - Event - Segment Explored | GA4 Event | CE: segment_explored | segment_name |
+| 18 | GA4 - Event - Modelo Explored | GA4 Event | CE: modelo_explored | modelo_type |
 
 ### Triggers (22)
 
@@ -415,9 +413,8 @@ dataLayer.push({
 | 20 | CE - solution_explored | Custom Event | event = solution_explored |
 | 21 | CE - segment_explored | Custom Event | event = segment_explored |
 | 22 | CE - modelo_explored | Custom Event | event = modelo_explored |
-| 23 | CE - lead_magnet_download | Custom Event | event = lead_magnet_download |
 
-### Variables (19)
+### Variables (25)
 
 | # | Nombre | Tipo | Data Layer Key / Lógica |
 |---|--------|------|------------------------|
@@ -426,7 +423,7 @@ dataLayer.push({
 | 3 | DLV - button_text | Data Layer | `button_text` |
 | 4 | DLV - cta_location | Data Layer | `cta_location` |
 | 5 | DLV - destination_url | Data Layer | `destination_url` |
-| 6 | DLV - inquiry_type | Data Layer | `asunto` |
+| 6 | DLV - asunto | Data Layer | `asunto` |
 | 7 | DLV - expedientes_ano | Data Layer | `expedientes_ano` |
 | 8 | DLV - portal_type | Data Layer | `portal_type` |
 | 9 | DLV - link_url | Data Layer | `link_url` |
@@ -437,11 +434,15 @@ dataLayer.push({
 | 14 | DLV - lead_type | Data Layer | `lead_type` |
 | 15 | DLV - error_type | Data Layer | `error_type` |
 | 16 | DLV - field_name | Data Layer | `field_name` |
-| 17 | CJS - Content Group | Custom JS | Clasifica por pathname |
-| 18 | CJS - Page Type | Custom JS | Clasifica por pathname |
-| 19 | DLV - lead_magnet_name | Data Layer | `lead_magnet_name` |
-| 20 | DLV - lead_source | Data Layer | `lead_source` |
-| 21 | Const - GA4 Measurement ID | Constante | `G-XXXXXXXXX` (reemplazar) |
+| 17 | DLV - empresa | Data Layer | `empresa` |
+| 18 | DLV - cargo | Data Layer | `cargo` |
+| 19 | DLV - currency | Data Layer | `currency` |
+| 20 | DLV - value | Data Layer | `value` |
+| 21 | DLV - menu_item | Data Layer | `menu_item` |
+| 22 | DLV - menu_section | Data Layer | `menu_section` |
+| 100 | CJS - Content Group | Custom JS | Clasifica por pathname |
+| 101 | CJS - Page Type | Custom JS | Clasifica por pathname |
+| 102 | Const - GA4 Measurement ID | Constante | `G-FW9TKGSK59` |
 
 ---
 
@@ -449,21 +450,31 @@ dataLayer.push({
 
 ### Checklist
 
-- [ ] Consent Mode v2 dispara antes que cualquier tag de medición
-- [ ] GA4 Config tag carga en All Pages con Consent Mode activo
-- [ ] Todos los eventos custom disparan solo tras dataLayer.push()
-- [ ] `generate_lead` dispara exactamente una vez por submit exitoso
-- [ ] Scroll depth no dispara en páginas cortas (< viewport height)
-- [ ] Timer de 30s no dispara en bounce sessions
-- [ ] Outbound links excluyen correctamente dominios propios
+- [x] GTM instalado (GTM-MBNWK2CW)
+- [x] Consent Mode v2 default en `<head>` antes de GTM
+- [x] Cookie Banner con modal de ajustes, toggles analytics/marketing
+- [x] Restauración de cookie `gt_consent` en `<head>` al cargar
+- [x] Enlace "Ajustes de cookies" en footer con `CustomEvent`
+- [x] GA4 Config tag en contenedor GTM con content_group y page_type
+- [x] dataLayer pushes en formularios (demo + contacto)
+- [x] `demo_form_started` / `contact_form_started` (onFocus)
+- [x] `form_error` en catch de ambos formularios
+- [x] `cta_clicked` en ButtonPrimary con trackLocation
+- [x] `solution_explored` / `segment_explored` / `modelo_explored` auto (DataLayerRouteTracker)
+- [x] `generate_lead` dispara una vez por submit exitoso con valor en EUR
+- [x] Scroll depth configurado en GTM (25/50/75/100%)
+- [x] Timer 30s para engaged session en GTM
+- [x] Outbound links excluyen ulpiano.es en GTM
+- [x] Contenedor GTM JSON generado con Measurement ID `G-FW9TKGSK59`
+- [x] Build de Next.js compila sin errores
+- [ ] **PENDIENTE:** Importar `gtm-container-ulpiano.json` en GTM
+- [ ] **PENDIENTE:** Marcar Key Events en GA4 Admin (ver sección 7)
+- [ ] **PENDIENTE:** Verificar con GTM Preview Mode + GA4 DebugView
 - [ ] No hay PII en ningún evento (sin email, nombre, teléfono)
 - [ ] UTMs se preservan correctamente en navegación interna
-- [ ] DebugView de GA4 muestra todos los eventos con parámetros correctos
-- [ ] Conversiones marcadas como Key Events en GA4 Admin
-- [ ] Audiences configuradas en GA4 Admin
 - [ ] Cross-domain tracking configurado si app.ulpiano.es existe
 
-### Testing por navegador
+### Testing por navegador (tras publicar GTM)
 
 - [ ] Chrome (desktop + mobile)
 - [ ] Safari (desktop + iOS)
@@ -506,14 +517,19 @@ dataLayer.push({
 
 ## 13. Roadmap de medición
 
-### Fase 1 — Fundación (actual)
+### Fase 1 — Fundación ← ESTAMOS AQUÍ
+
 - [x] GTM instalado
-- [ ] Consent Mode v2
-- [ ] GA4 Configuration + eventos base
-- [ ] dataLayer pushes en formularios
-- [ ] Key Events configurados
+- [x] Consent Mode v2 + Cookie Banner
+- [x] GA4 Configuration + eventos base en contenedor GTM
+- [x] dataLayer pushes en formularios, CTAs, contenido
+- [ ] Importar contenedor GTM y publicar
+- [ ] Marcar Key Events en GA4 Admin
+- [ ] Verificar con Preview Mode + DebugView
+- [ ] Deploy a producción
 
 ### Fase 2 — Optimización (mes 2-3)
+
 - [ ] Google Ads conversion tracking
 - [ ] Enhanced Conversions (first-party data)
 - [ ] LinkedIn Insight Tag
@@ -521,8 +537,18 @@ dataLayer.push({
 - [ ] A/B testing framework
 
 ### Fase 3 — Escala (mes 4-6)
+
 - [ ] Server-side GTM (reducir latencia, mejorar data quality)
 - [ ] CRM integration (lead scoring desde analytics)
 - [ ] Offline conversion import (demo → cliente)
 - [ ] Attribution modeling avanzado
 - [ ] Predictive audiences en GA4
+
+---
+
+## Apéndice: Eventos pendientes de implementar (baja prioridad)
+
+| Evento | Archivo afectado | Complejidad | Prioridad |
+|--------|-----------------|-------------|-----------|
+| `navigation_clicked` | `Header.tsx` | Baja | Baja — bajo valor analítico |
+| `login_portal_clicked` | `src/app/login/page.tsx` | Baja | Media — cuando el portal esté activo |

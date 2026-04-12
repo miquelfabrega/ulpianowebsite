@@ -259,6 +259,17 @@ export function DemoClient() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [formError, setFormError] = useState("");
+  const formStartedRef = useRef(false);
+
+  const dl = useRef(
+    () => (window as Window & { dataLayer?: Record<string, unknown>[] }).dataLayer,
+  );
+
+  function handleFormStarted() {
+    if (formStartedRef.current) return;
+    formStartedRef.current = true;
+    dl.current()?.push({ event: "demo_form_started" });
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -281,12 +292,11 @@ export function DemoClient() {
       if (!res.ok) throw new Error("Error al enviar");
       setSubmitted(true);
 
-      const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-      w.dataLayer?.push({
+      dl.current()?.push({
         event: "demo_form_submitted",
         empresa: data.company,
       });
-      w.dataLayer?.push({
+      dl.current()?.push({
         event: "generate_lead",
         lead_type: "demo",
         currency: "EUR",
@@ -294,6 +304,11 @@ export function DemoClient() {
       });
     } catch {
       setFormError("Ha ocurrido un error. Inténtalo de nuevo.");
+      dl.current()?.push({
+        event: "form_error",
+        form_name: "demo",
+        error_type: "submission",
+      });
     } finally {
       setSending(false);
     }
@@ -632,6 +647,7 @@ export function DemoClient() {
                           name="name"
                           required
                           placeholder="María García López"
+                          onFocus={handleFormStarted}
                           style={inputStyle}
                         />
                       </div>

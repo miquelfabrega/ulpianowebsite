@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { FiscalidadClient } from "./FiscalidadClient";
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
+import { CrossLink } from "@/components/CrossLink";
 
 export const metadata: Metadata = {
   title:
@@ -23,6 +24,11 @@ export default function FiscalidadSucesoriaPage() {
         ]}
       />
       <FiscalidadClient />
+      <CrossLink
+        href="/modelos"
+        label="Guía completa de modelos fiscales sucesorios"
+        description="¿Quieres entender qué es el Modelo 650, 651, 660 y cuándo se presenta cada uno?"
+      />
     </>
   );
 }

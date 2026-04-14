@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PlanificadorClient } from "./PlanificadorClient";
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
+import { CrossLink } from "@/components/CrossLink";
 
 export const metadata: Metadata = {
   title:
@@ -23,6 +24,11 @@ export default function PlanificacionSucesoriaPage() {
         ]}
       />
       <PlanificadorClient />
+      <CrossLink
+        href="/modelos/modelo-660"
+        label="Genera el inventario de bienes con Ulpiano"
+        description="El Modelo 660 es el inventario patrimonial que acompaña a cada expediente sucesorio."
+      />
     </>
   );
 }

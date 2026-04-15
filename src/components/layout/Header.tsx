@@ -17,6 +17,12 @@ import {
   pensadoCanales,
   type NavDropdownItem,
 } from "./nav-config";
+import {
+  solucionsItemsCa,
+  pensatProfessionalsCa,
+  pensatCanalsCa,
+} from "./nav-config-ca";
+import LangSwitch from "./LangSwitch";
 
 /* ─── Dropdown item ─── */
 
@@ -106,12 +112,10 @@ function DesktopDropdown({
         />
       </button>
 
-      {/* Active dot */}
       {isActive && !isOpen && (
         <span className="absolute bottom-0 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-[var(--ulpiano-green)]" />
       )}
 
-      {/* Panel */}
       <div
         className={`absolute left-1/2 top-full pt-2 -translate-x-1/2 transition-all duration-200 ${
           isOpen
@@ -131,11 +135,10 @@ function DesktopDropdown({
 function MobileAccordion({
   label,
   children,
-  onLinkClick,
 }: {
   label: string;
   children: ReactNode;
-  onLinkClick: () => void;
+  onLinkClick?: () => void;
 }) {
   const [open, setOpen] = useState(false);
   return (
@@ -185,37 +188,78 @@ function MobileSubLink({
   );
 }
 
+/* ─── Labels per idioma ─── */
+
+const labels = {
+  es: {
+    solutions: "Soluciones",
+    pensado: "Pensado para",
+    precios: "Precios",
+    login: "Iniciar sesión",
+    demo: "Reserva tu Demo",
+    verTodas: "Ver todas las soluciones",
+    profesionales: "Profesionales",
+    canales: "Canales",
+    nav: "Navegación principal",
+    menu: "Abrir menú de navegación",
+  },
+  ca: {
+    solutions: "Solucions",
+    pensado: "Pensat per",
+    precios: "Preus",
+    login: "Inicia sessió",
+    demo: "Reserva la teva Demo",
+    verTodas: "Totes les solucions",
+    profesionales: "Professionals",
+    canales: "Canals",
+    nav: "Navegació principal",
+    menu: "Obrir menú de navegació",
+  },
+};
+
 /* ─── Main Header ─── */
 
 export default function Header() {
   const pathname = usePathname();
+  const isCa = pathname === "/ca" || pathname.startsWith("/ca/");
+  const locale = isCa ? "ca" : "es";
+  const t = labels[locale];
+
+  const solutionsData = isCa ? solucionsItemsCa : solucionesItems;
+  const professionalsData = isCa ? pensatProfessionalsCa : pensadoProfesionales;
+  const channelsData = isCa ? pensatCanalsCa : pensadoCanales;
+
+  const solutionsPrefix = isCa ? "/ca/solucions" : "/soluciones";
+  const pensadoPrefix = isCa ? "/ca/pensat-per" : "/pensado-para";
+  const preciosHref = isCa ? "/ca/preus" : "/precios";
+  const loginHref = "/login";
+  const demoHref = isCa ? "/ca/demo" : "/demo";
+  const homeHref = isCa ? "/ca" : "/";
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
-  const isSolucionesActive = pathname.startsWith("/soluciones");
-  const isPensadoActive = pathname.startsWith("/pensado-para");
-  const isPreciosActive = pathname === "/precios";
+  const isSolucionesActive = pathname.startsWith(solutionsPrefix);
+  const isPensadoActive = pathname.startsWith(pensadoPrefix);
+  const isPreciosActive = pathname === preciosHref;
 
   const closeAll = useCallback(() => {
     setOpenDropdown(null);
     setIsMobileOpen(false);
   }, []);
 
-  // Close on route change
   useEffect(() => {
     closeAll();
   }, [pathname, closeAll]);
 
-  // Scroll listener
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 0);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Escape key
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeAll();
@@ -224,7 +268,6 @@ export default function Header() {
     return () => document.removeEventListener("keydown", handleKey);
   }, [closeAll]);
 
-  // Click outside
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
@@ -245,19 +288,13 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-full max-w-[1200px] items-center justify-between px-6">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-white font-dm-sans font-bold text-lg tracking-tight"
-        >
+        <Link href={homeHref} className="text-white font-dm-sans font-bold text-lg tracking-tight">
           ULPIANO
         </Link>
 
-        {/* ─── Desktop nav ─── */}
-        <nav className="hidden lg:flex items-center gap-1" role="navigation" aria-label="Navegación principal">
-          {/* Soluciones dropdown */}
+        <nav className="hidden lg:flex items-center gap-1" role="navigation" aria-label={t.nav}>
           <DesktopDropdown
-            label="Soluciones"
+            label={t.solutions}
             isActive={isSolucionesActive}
             isOpen={openDropdown === "soluciones"}
             onOpen={() => setOpenDropdown("soluciones")}
@@ -265,26 +302,25 @@ export default function Header() {
           >
             <div className="w-[420px] rounded-xl border border-white/[0.08] bg-night/95 backdrop-blur-2xl p-2 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)]">
               <div className="flex flex-col">
-                {solucionesItems.map((item) => (
+                {solutionsData.map((item) => (
                   <DropdownLink key={item.href} item={item} onClick={closeAll} />
                 ))}
               </div>
               <div className="mt-1 border-t border-white/[0.06] pt-1">
                 <Link
-                  href="/soluciones"
+                  href={solutionsPrefix}
                   onClick={closeAll}
                   className="group flex items-center gap-2 rounded-lg px-3 py-2 text-[13px] text-white/45 transition-colors hover:text-white/70"
                 >
-                  Ver todas las soluciones
+                  {t.verTodas}
                   <ArrowRight size={13} strokeWidth={2} className="transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </div>
             </div>
           </DesktopDropdown>
 
-          {/* Pensado para dropdown */}
           <DesktopDropdown
-            label="Pensado para"
+            label={t.pensado}
             isActive={isPensadoActive}
             isOpen={openDropdown === "pensado"}
             onOpen={() => setOpenDropdown("pensado")}
@@ -292,21 +328,19 @@ export default function Header() {
           >
             <div className="w-[520px] rounded-xl border border-white/[0.08] bg-night/95 backdrop-blur-2xl p-2 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)]">
               <div className="grid grid-cols-2 gap-0">
-                {/* Profesionales */}
                 <div>
                   <p className="px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/30">
-                    Profesionales
+                    {t.profesionales}
                   </p>
-                  {pensadoProfesionales.map((item) => (
+                  {professionalsData.map((item) => (
                     <DropdownLink key={item.href} item={item} onClick={closeAll} />
                   ))}
                 </div>
-                {/* Canales */}
                 <div>
                   <p className="px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/30">
-                    Canales
+                    {t.canales}
                   </p>
-                  {pensadoCanales.map((item) => (
+                  {channelsData.map((item) => (
                     <DropdownLink key={item.href} item={item} onClick={closeAll} />
                   ))}
                 </div>
@@ -314,61 +348,46 @@ export default function Header() {
             </div>
           </DesktopDropdown>
 
-          {/* Precios (direct link) */}
           <Link
-            href="/precios"
+            href={preciosHref}
             className={`relative inline-flex items-center rounded-lg px-4 py-2 text-[14px] font-medium transition-all duration-150 ${
               isPreciosActive
                 ? "text-white bg-white/[0.06]"
                 : "text-white/60 hover:text-white hover:bg-white/[0.06]"
             }`}
           >
-            Precios
+            {t.precios}
             {isPreciosActive && (
               <span className="absolute bottom-0 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-[var(--ulpiano-green)]" />
             )}
           </Link>
         </nav>
 
-        {/* ─── Desktop CTAs ─── */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3">
+          <LangSwitch />
           <Link
-            href="/login"
+            href={loginHref}
             className="text-[14px] font-medium text-white/60 transition-colors hover:text-white"
           >
-            Iniciar sesión
+            {t.login}
           </Link>
-          <ButtonPrimary href="/demo" size="sm" trackLocation="header">
-            Reserva tu Demo
+          <ButtonPrimary href={demoHref} size="sm" trackLocation="header">
+            {t.demo}
           </ButtonPrimary>
         </div>
 
-        {/* ─── Mobile hamburger ─── */}
         <button
           onClick={() => setIsMobileOpen(!isMobileOpen)}
           className="lg:hidden flex flex-col justify-center gap-1.5 w-8 h-8 text-white"
-          aria-label="Abrir menú de navegación"
+          aria-label={t.menu}
           aria-expanded={isMobileOpen}
         >
-          <span
-            className={`w-6 h-0.5 bg-white transition-transform duration-300 ${
-              isMobileOpen ? "translate-y-2 rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`w-6 h-0.5 bg-white transition-opacity duration-200 ${
-              isMobileOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`w-6 h-0.5 bg-white transition-transform duration-300 ${
-              isMobileOpen ? "-translate-y-2 -rotate-45" : ""
-            }`}
-          />
+          <span className={`w-6 h-0.5 bg-white transition-transform duration-300 ${isMobileOpen ? "translate-y-2 rotate-45" : ""}`} />
+          <span className={`w-6 h-0.5 bg-white transition-opacity duration-200 ${isMobileOpen ? "opacity-0" : ""}`} />
+          <span className={`w-6 h-0.5 bg-white transition-transform duration-300 ${isMobileOpen ? "-translate-y-2 -rotate-45" : ""}`} />
         </button>
       </div>
 
-      {/* ─── Mobile menu ─── */}
       <div
         className={`absolute top-full left-0 right-0 h-[calc(100dvh-3.5rem)] bg-night/[0.98] backdrop-blur-2xl lg:hidden transition-all duration-300 ${
           isMobileOpen
@@ -377,62 +396,49 @@ export default function Header() {
         }`}
       >
         <div className="flex h-full flex-col overflow-y-auto px-6 py-4">
-          <MobileAccordion label="Soluciones" onLinkClick={closeAll}>
-            {solucionesItems.map((item) => (
-              <MobileSubLink
-                key={item.href}
-                href={item.href}
-                label={item.label}
-                onClick={closeAll}
-              />
+          <MobileAccordion label={t.solutions}>
+            {solutionsData.map((item) => (
+              <MobileSubLink key={item.href} href={item.href} label={item.label} onClick={closeAll} />
             ))}
           </MobileAccordion>
 
-          <MobileAccordion label="Pensado para" onLinkClick={closeAll}>
+          <MobileAccordion label={t.pensado}>
             <p className="pl-4 pt-1 pb-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/30">
-              Profesionales
+              {t.profesionales}
             </p>
-            {pensadoProfesionales.map((item) => (
-              <MobileSubLink
-                key={item.href}
-                href={item.href}
-                label={item.label}
-                onClick={closeAll}
-              />
+            {professionalsData.map((item) => (
+              <MobileSubLink key={item.href} href={item.href} label={item.label} onClick={closeAll} />
             ))}
             <p className="pl-4 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/30">
-              Canales
+              {t.canales}
             </p>
-            {pensadoCanales.map((item) => (
-              <MobileSubLink
-                key={item.href}
-                href={item.href}
-                label={item.label}
-                onClick={closeAll}
-              />
+            {channelsData.map((item) => (
+              <MobileSubLink key={item.href} href={item.href} label={item.label} onClick={closeAll} />
             ))}
           </MobileAccordion>
 
           <Link
-            href="/precios"
+            href={preciosHref}
             onClick={closeAll}
             className="block border-b border-white/[0.06] py-4 text-[16px] font-medium text-white"
           >
-            Precios
+            {t.precios}
           </Link>
 
-          {/* Mobile CTAs */}
           <div className="mt-auto pt-6">
+            <div className="flex justify-center mb-4">
+              <LangSwitch />
+            </div>
             <Link
-              href="/login"
+              href={loginHref}
               onClick={closeAll}
               className="block text-center text-[15px] text-white/60 transition-colors hover:text-white py-3"
             >
-              Iniciar sesión
+              {t.login}
             </Link>
             <div className="mt-3">
-              <ButtonPrimary href="/demo" size="sm" className="w-full" trackLocation="mobile_menu">
-                Reserva tu Demo
+              <ButtonPrimary href={demoHref} size="sm" className="w-full" trackLocation="mobile_menu">
+                {t.demo}
               </ButtonPrimary>
             </div>
           </div>

@@ -2,152 +2,63 @@ import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://ulpiano.es";
 
+// Mapa de parelles ES→CA per incloure alternates hreflang al sitemap
+const pairs: Array<{ es: string; ca: string; priority: number; freq: "weekly" | "monthly" | "yearly" }> = [
+  { es: "",                                              ca: "/ca",                                              priority: 1.0, freq: "weekly"  },
+  { es: "/soluciones",                                    ca: "/ca/solucions",                                    priority: 0.9, freq: "monthly" },
+  { es: "/soluciones/planificacion-sucesoria",            ca: "/ca/solucions/planificacio-successoria",           priority: 0.9, freq: "monthly" },
+  { es: "/soluciones/fiscalidad-sucesoria",               ca: "/ca/solucions/fiscalitat-successoria",             priority: 0.9, freq: "monthly" },
+  { es: "/soluciones/documentacion-sucesoria",            ca: "/ca/solucions/documentacio-successoria",           priority: 0.9, freq: "monthly" },
+  { es: "/soluciones/procesamiento-documental",           ca: "/ca/solucions/processament-documental",            priority: 0.9, freq: "monthly" },
+  { es: "/pensado-para/despachos",                        ca: "/ca/pensat-per/despatxos",                         priority: 0.8, freq: "monthly" },
+  { es: "/pensado-para/notarias",                         ca: "/ca/pensat-per/notaries",                          priority: 0.8, freq: "monthly" },
+  { es: "/pensado-para/asesorias",                        ca: "/ca/pensat-per/assessories",                       priority: 0.8, freq: "monthly" },
+  { es: "/pensado-para/family-office",                    ca: "/ca/pensat-per/family-office",                     priority: 0.8, freq: "monthly" },
+  { es: "/pensado-para/funerarias",                       ca: "/ca/pensat-per/funeraries",                        priority: 0.8, freq: "monthly" },
+  { es: "/pensado-para/aseguradoras",                     ca: "/ca/pensat-per/asseguradores",                     priority: 0.8, freq: "monthly" },
+  { es: "/modelos",                                       ca: "/ca/models",                                       priority: 0.8, freq: "monthly" },
+  { es: "/modelos/modelo-650",                            ca: "/ca/models/model-650",                             priority: 0.7, freq: "monthly" },
+  { es: "/modelos/modelo-651",                            ca: "/ca/models/model-651",                             priority: 0.7, freq: "monthly" },
+  { es: "/modelos/modelo-652",                            ca: "/ca/models/model-652",                             priority: 0.7, freq: "monthly" },
+  { es: "/modelos/modelo-653",                            ca: "/ca/models/model-653",                             priority: 0.7, freq: "monthly" },
+  { es: "/modelos/modelo-660",                            ca: "/ca/models/model-660",                             priority: 0.7, freq: "monthly" },
+  { es: "/recursos/checklist-expediente-sucesorio",       ca: "/ca/recursos/checklist-expedient-successori",      priority: 0.8, freq: "monthly" },
+  { es: "/demo",                                          ca: "/ca/demo",                                         priority: 0.9, freq: "monthly" },
+  { es: "/contacto",                                      ca: "/ca/contacte",                                     priority: 0.7, freq: "monthly" },
+  { es: "/legal/privacidad",                              ca: "/ca/legal/privacitat",                             priority: 0.3, freq: "yearly"  },
+  { es: "/legal/terminos",                                ca: "/ca/legal/termes",                                 priority: 0.3, freq: "yearly"  },
+  { es: "/legal/cookies",                                 ca: "/ca/legal/cookies",                                priority: 0.3, freq: "yearly"  },
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    // Home
-    {
-      url: BASE_URL,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    // Soluciones
-    {
-      url: `${BASE_URL}/soluciones/planificacion-sucesoria`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/soluciones/fiscalidad-sucesoria`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/soluciones/documentacion-sucesoria`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/soluciones/procesamiento-documental`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    // Pensado para
-    {
-      url: `${BASE_URL}/pensado-para/despachos`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/pensado-para/notarias`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/pensado-para/asesorias`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/pensado-para/family-office`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/pensado-para/funerarias`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/pensado-para/aseguradoras`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    // Modelos fiscales
-    {
-      url: `${BASE_URL}/modelos`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/modelos/modelo-650`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/modelos/modelo-651`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/modelos/modelo-652`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/modelos/modelo-653`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/modelos/modelo-660`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    // Recursos / Lead magnets
-    {
-      url: `${BASE_URL}/recursos/checklist-expediente-sucesorio`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    // Conversión
-    {
-      url: `${BASE_URL}/demo`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/contacto`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    // Legal
-    {
-      url: `${BASE_URL}/legal/privacidad`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${BASE_URL}/legal/terminos`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${BASE_URL}/legal/cookies`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-  ];
+  const now = new Date();
+  const entries: MetadataRoute.Sitemap = [];
+
+  for (const { es, ca, priority, freq } of pairs) {
+    const esUrl = `${BASE_URL}${es}`;
+    const caUrl = `${BASE_URL}${ca}`;
+    const alternates = {
+      languages: {
+        es: esUrl,
+        ca: caUrl,
+        "x-default": esUrl,
+      },
+    };
+    entries.push({
+      url: esUrl,
+      lastModified: now,
+      changeFrequency: freq,
+      priority,
+      alternates,
+    });
+    entries.push({
+      url: caUrl,
+      lastModified: now,
+      changeFrequency: freq,
+      priority,
+      alternates,
+    });
+  }
+
+  return entries;
 }

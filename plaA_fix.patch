@@ -1,24 +1,3 @@
-From 685097e77c755c4e61037133372e84145f82701c Mon Sep 17 00:00:00 2001
-From: Miquel <hola@gironatour.com>
-Date: Wed, 15 Apr 2026 20:39:17 +0200
-Subject: [PATCH] =?UTF-8?q?fix(build):=20corregir=20errors=20de=20compilac?=
- =?UTF-8?q?i=C3=B3=20als=20models=20651,=20652=20i=20653?=
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-- Canviar import { BreadcrumbJsonLd } per import default als models 651/652/653
-- Eliminar bloc <style> de modelo-652 i modelo-653 (no permès en Server Components)
-- Moure 'canonical' dins d'alternates als models 652 i 653
-- Corregir prop url→href al BreadcrumbJsonLd de 652 i 653
-
-Co-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>
----
- .../(marketing)/modelos/modelo-651/page.tsx   |   2 +-
- .../(marketing)/modelos/modelo-652/page.tsx   | 130 +--------------
- .../(marketing)/modelos/modelo-653/page.tsx   | 154 +-----------------
- 3 files changed, 13 insertions(+), 273 deletions(-)
-
 diff --git a/src/app/(marketing)/modelos/modelo-651/page.tsx b/src/app/(marketing)/modelos/modelo-651/page.tsx
 index efca6a8..202f57d 100644
 --- a/src/app/(marketing)/modelos/modelo-651/page.tsx
@@ -366,6 +345,3 @@ index b50bfa0..c1ec83e 100644
          ]}
        />
  
--- 
-2.34.1
-

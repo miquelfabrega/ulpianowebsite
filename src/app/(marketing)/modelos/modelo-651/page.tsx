@@ -133,12 +133,6 @@ export default function Modelo651Page() {
                     textDecoration: "none",
                     transition: "color 200ms ease",
                   }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "rgba(255,255,255,0.9)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "rgba(255,255,255,0.5)")
-                  }
                 >
                   Inicio
                 </Link>
@@ -152,12 +146,6 @@ export default function Modelo651Page() {
                     textDecoration: "none",
                     transition: "color 200ms ease",
                   }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "rgba(255,255,255,0.9)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "rgba(255,255,255,0.5)")
-                  }
                 >
                   Modelos
                 </Link>
@@ -453,15 +441,6 @@ export default function Modelo651Page() {
                 border: "1px solid var(--mist)",
                 transition: "all 200ms ease",
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 4px 12px rgba(0,0,0,0.08)";
-                e.currentTarget.style.borderColor = "var(--slate)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = "none";
-                e.currentTarget.style.borderColor = "var(--mist)";
-              }}
             >
               <div
                 style={{
@@ -493,15 +472,6 @@ export default function Modelo651Page() {
                 borderRadius: "8px",
                 border: "1px solid var(--mist)",
                 transition: "all 200ms ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 4px 12px rgba(0,0,0,0.08)";
-                e.currentTarget.style.borderColor = "var(--slate)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = "none";
-                e.currentTarget.style.borderColor = "var(--mist)";
               }}
             >
               <div
@@ -535,15 +505,6 @@ export default function Modelo651Page() {
                 border: "1px solid var(--mist)",
                 transition: "all 200ms ease",
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 4px 12px rgba(0,0,0,0.08)";
-                e.currentTarget.style.borderColor = "var(--slate)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = "none";
-                e.currentTarget.style.borderColor = "var(--mist)";
-              }}
             >
               <div
                 style={{
@@ -575,15 +536,6 @@ export default function Modelo651Page() {
                 borderRadius: "8px",
                 border: "1px solid var(--mist)",
                 transition: "all 200ms ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 4px 12px rgba(0,0,0,0.08)";
-                e.currentTarget.style.borderColor = "var(--slate)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = "none";
-                e.currentTarget.style.borderColor = "var(--mist)";
               }}
             >
               <div

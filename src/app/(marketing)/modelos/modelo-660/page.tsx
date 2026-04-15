@@ -292,23 +292,6 @@ export default function Modelo660Page() {
       </section>
 
       {/* ── Shared scoped styles ── */}
-      <style>{`
-        .mod-nav { display:flex; gap:6px; flex-wrap:wrap; }
-        .mod-nav__item { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:6px; font-size:13px; font-weight:500; color:rgba(255,255,255,0.5); text-decoration:none; transition:color 200ms ease, background 200ms ease; }
-        .mod-nav__item:hover { color:rgba(255,255,255,0.9); }
-        .mod-nav__item--active { background:var(--ulpiano-green); color:white; }
-        .mod-summary-row { display:grid; grid-template-columns:240px 1fr; gap:var(--space-4); }
-        .mod-summary-field { padding:var(--space-4); font-weight:600; font-size:14px; color:var(--ink); background:rgba(241,245,249,0.5); }
-        .mod-summary-value { padding:var(--space-4); font-size:15px; color:var(--ink); line-height:1.6; }
-        .mod-obligados-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-6); }
-        .mod-related-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-6); }
-        .mod-table { width:100%; border-collapse:collapse; border:1px solid var(--mist); border-radius:12px; overflow:hidden; font-size:14px; }
-        .mod-table th { background:var(--surface); padding:12px 16px; text-align:left; font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:0.04em; color:var(--slate); border-bottom:1px solid var(--mist); }
-        .mod-table td { padding:12px 16px; border-bottom:1px solid var(--mist); color:var(--ink); line-height:1.5; }
-        .mod-table tr:last-child td { border-bottom:none; }
-        @media (max-width:1024px) { .mod-obligados-grid { grid-template-columns:repeat(2,1fr); } .mod-related-grid { grid-template-columns:repeat(2,1fr); } .mod-summary-row { grid-template-columns:180px 1fr; } }
-        @media (max-width:768px) { .mod-obligados-grid { grid-template-columns:1fr; } .mod-related-grid { grid-template-columns:1fr; } .mod-summary-row { grid-template-columns:1fr; } .mod-summary-field { padding-bottom:0; } .mod-nav { overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; padding-bottom:4px; } .mod-nav__item { white-space:nowrap; } }
-      `}</style>
     </>
   );
 }

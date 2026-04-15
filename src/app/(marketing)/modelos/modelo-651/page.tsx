@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Modelo651InteractiveShells } from "./Modelo651Client";
 import { ModelNav } from "@/components/modelos/ModelNav";
-import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 
 export const metadata: Metadata = {
   title: "Modelo 651 Catalunya: Guía Completa del Impuesto de Donaciones | Ulpiano",

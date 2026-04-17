@@ -112,6 +112,7 @@ export const esToCaMap: Record<string, string> = {
   "/pensado-para/family-office": "/ca/pensat-per/family-office",
   "/pensado-para/funerarias": "/ca/pensat-per/funeraries",
   "/pensado-para/aseguradoras": "/ca/pensat-per/asseguradores",
+  "/ia": "/ca/ia",
   "/demo": "/ca/demo",
   "/contacto": "/ca/contacte",
   "/precios": "/ca/preus",

@@ -194,6 +194,7 @@ const labels = {
   es: {
     solutions: "Soluciones",
     pensado: "Pensado para",
+    ia: "IA",
     precios: "Precios",
     login: "Iniciar sesión",
     demo: "Reserva tu Demo",
@@ -206,6 +207,7 @@ const labels = {
   ca: {
     solutions: "Solucions",
     pensado: "Pensat per",
+    ia: "IA",
     precios: "Preus",
     login: "Inicia sessió",
     demo: "Reserva la teva Demo",
@@ -231,6 +233,7 @@ export default function Header() {
 
   const solutionsPrefix = isCa ? "/ca/solucions" : "/soluciones";
   const pensadoPrefix = isCa ? "/ca/pensat-per" : "/pensado-para";
+  const iaHref = isCa ? "/ca/ia" : "/ia";
   const preciosHref = isCa ? "/ca/preus" : "/precios";
   const loginHref = "/login";
   const demoHref = isCa ? "/ca/demo" : "/demo";
@@ -243,6 +246,7 @@ export default function Header() {
 
   const isSolucionesActive = pathname.startsWith(solutionsPrefix);
   const isPensadoActive = pathname.startsWith(pensadoPrefix);
+  const isIaActive = pathname === iaHref;
   const isPreciosActive = pathname === preciosHref;
 
   const closeAll = useCallback(() => {
@@ -349,6 +353,20 @@ export default function Header() {
           </DesktopDropdown>
 
           <Link
+            href={iaHref}
+            className={`relative inline-flex items-center rounded-lg px-4 py-2 text-[14px] font-medium transition-all duration-150 ${
+              isIaActive
+                ? "text-white bg-white/[0.06]"
+                : "text-white/60 hover:text-white hover:bg-white/[0.06]"
+            }`}
+          >
+            {t.ia}
+            {isIaActive && (
+              <span className="absolute bottom-0 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-[var(--ulpiano-green)]" />
+            )}
+          </Link>
+
+          <Link
             href={preciosHref}
             className={`relative inline-flex items-center rounded-lg px-4 py-2 text-[14px] font-medium transition-all duration-150 ${
               isPreciosActive
@@ -416,6 +434,14 @@ export default function Header() {
               <MobileSubLink key={item.href} href={item.href} label={item.label} onClick={closeAll} />
             ))}
           </MobileAccordion>
+
+          <Link
+            href={iaHref}
+            onClick={closeAll}
+            className="block border-b border-white/[0.06] py-4 text-[16px] font-medium text-white"
+          >
+            {t.ia}
+          </Link>
 
           <Link
             href={preciosHref}
